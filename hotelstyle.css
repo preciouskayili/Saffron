@@ -1,0 +1,73 @@
+.btn_top{
+	margin-right: 10px;
+}
+.form-dropdown{
+	margin-top: -25px;
+}
+.custom-addon{
+	background: #fff;
+}
+.border-right{
+	border-right: 0px;
+}
+.custom-button{
+	background: #60c9eb;
+	color: #fff;
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+	font-size: 16px;
+	transition: all .4s ease-in-out;
+}
+.custom-button:hover{
+	background: #53B1DE;
+	border-color: #53B1DE;
+	color: #fff;
+}
+.tour .input-group{
+	margin-bottom: 22px;
+}
+.formText{
+	color: #707274;
+}
+.size-px-wide{
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  background-image: url(hotel2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+.banner_part .banner_text h1 {
+  font-size: 120px;
+  line-height: 1;
+  text-transform: capitalize;
+  font-weight: 900;
+  margin-bottom: 22px;
+}
+.banner_part .banner_text p {
+  font-size: 24px;
+  color: #5667ff;
+}
+.banner_part .banner_text h1 span {
+  color: #fe5c24;
+}
+@media (max-width: 575px) {
+  .banner_part .banner_text h1 {
+    font-size: 75px;
+    margin-bottom: 15px;
+    line-height: 1.3;
+  }
+}
+@media (max-width: 302px) {
+  .banner_part .banner_text h1 {
+    font-size: 60px;
+    margin-bottom: 15px;
+    line-height: 1.3;
+  }
+}
+.destinations-card{
+	margin-bottom: 15px;
+}
