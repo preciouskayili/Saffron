@@ -12,6 +12,14 @@ input, select{
 p.myHover:hover {
 	background-color: #779add;
 }
+.margin-responsive {
+	margin-top: -100px;
+}
+@media only screen and (max-device-width: 765px) {
+	.margin-responsive {
+		margin-top: 0px;
+	}
+}
 .top-pic {
 	opacity: 0.8;
 }

@@ -28,12 +28,11 @@
 
   function scrollFunction() {
     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-      document.getElementById("dark").style.backgroundColor = "red";
+      document.getElementById("dark").style.backgroundColor = "black";
       document.getElementById("dark").classList.remove("navbar-transparent");
       // document.getElementById("dark").classList.style.boxShadow = "none";
       // document.getElementById("logo").style.fontSize = "25px";
-      document.getElementById("dark").style.boxShadow = "3px 3px 5px 6px #ccc";
-      document.getElementById("dark").style.height = "10px";
+      document.getElementById("dark").style.boxShadow = "1px 1px 3px 4px #83808079";
       console.log("Navbar");
     } else {
       document.getElementById("dark").style.backgroundColor = "#779add";
@@ -45,26 +44,26 @@
 <body onload="populateSelect()" id="body">
   <nav class="navbar navbar-dark sticky-top scrolling-navbar" id="dark" style="background-color: #779add; box-shadow: none;">
     <a href="index.php" class="navbar-brand">Saffron</a>
-    <button class="btn color-unique btn-outline-dark btn-sm" title="High" onclick="darkMode()" id="darkButton"><i class="fas fa-moon"></i></button>
-    <button class="btn color-unique btn-outline-white btn-sm display" onclick="lightMode()" id="lightButton" style="display: none;"><i class="fas fa-sun text-warning"></i></button>
-    <form action="index.php" method="post" class="form-inline ml-auto">
-      <div class="md-form input-group my-0">
-        <input type="text" name="q" id="searchDb" placeholder="Quick flight search" class="form-control" style="font-size: 13px;">
-        <div class="input-group-prepend">
-          <button class="input-group-text text-white" name="instantSearch" id="basic-addon11" style="background-color: transparent; border: 0px; margin-left: -25px; font-size: 13px;" title="Search"><i class="fas fa-search"></i></button>
-        </div>
-      </div>
-    </form>
+    <div class="d-flex mx-auto">
+      <i class="fab fa-facebook text-white" style="font-size: 30px; margin-right: 20px;"></i>
+      <i class="fab fa-instagram text-white" style="font-size: 30px; margin-right: 20px;"></i>
+      <i class="fab fa-twitter text-white" style="font-size: 30px; margin-right: 20px;"></i>
+      <i class="fab fa-whatsapp text-white" style="font-size: 30px; margin-right: 20px;"></i>
+      <i class="fab fa-messenger text-white" style="font-size: 30px;"></i>
+    </div>
   </nav>
   <div class="mask">
     <div class="bg-img" id="bgImg">
       <div class="container" style="display: block;">
         <div class="row">
-          <div class="col-md-5" style="margin-top: 150px;">
+          <div class="col-md-5" style="margin-top: 125px;">
             <h1 id="makeWhite2">Make Your Reservation</h1>
+            <h4 class="text-white">The home of the most affordable <b style="border: 1px solid white; padding: 5px; background-color: black; font-size:20px;">Flights</b></h4>
             <p class="text-bright">Lorem ipsum dolor sit amet consectetur adipisicing elit.lorem ipsum dolor sit amet recrtum lactum Cupiditate laboriosam numquam at. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam voluptatum ea a fugiat libero, dignissimos cumque veniam qui ratione dolor odit nobis. Accusantium delectus velit soluta quibusdam dolore alias vel.</p>
+            <a hewf="#" class="btn btn-dark ml-auto">Get started</a>
+            <a hewf="#" class="btn btn-dark mr-auto">Need help ?</a>
           </div>
-          <div class="col-md-7 col-md-offset-1" style="margin-top: 150px;">
+          <div class="col-md-7 col-md-offset-1" style="margin-top: 125px;">
             <div class="card" style="border-radius: 0px; padding: 15px 15px 15px 15px;">
               <form action="index.php" method="get">
                 <div class="form-group">
@@ -210,7 +209,7 @@
       </div>
     </div>          
     <?php endif; ?>
-    <div class="container flex-center">
+    <div class="container flex-center margin-responsive">
         <div class="card text-center">
             <div class="card-body" id="card">
               <h1 class="card-title">Card</h1>
