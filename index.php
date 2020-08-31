@@ -23,7 +23,25 @@
   <!-- Bootstrap Core css and Font-Awesome-->
   <!-- <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet"> -->
 </head>
+<script>
+  window.onscroll = function() {scrollFunction()};
 
+  function scrollFunction() {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+      document.getElementById("dark").style.backgroundColor = "red";
+      document.getElementById("dark").classList.remove("navbar-transparent");
+      // document.getElementById("dark").classList.style.boxShadow = "none";
+      // document.getElementById("logo").style.fontSize = "25px";
+      document.getElementById("dark").style.boxShadow = "3px 3px 5px 6px #ccc";
+      document.getElementById("dark").style.height = "10px";
+      console.log("Navbar");
+    } else {
+      document.getElementById("dark").style.backgroundColor = "#779add";
+      document.getElementById("dark").style.boxShadow = "none";
+      // document.getElementById("logo").style.fontSize = "35px";
+    }
+  }
+</script>
 <body onload="populateSelect()" id="body">
   <nav class="navbar navbar-dark sticky-top scrolling-navbar" id="dark" style="background-color: #779add; box-shadow: none;">
     <a href="index.php" class="navbar-brand">Saffron</a>
@@ -38,43 +56,15 @@
       </div>
     </form>
   </nav>
-  <?php if (isset($_POST['instantSearch'])) : ?>
-  <?php if ($result == TRUE) : ?>
-  <div class="col-md-3 d-block ml-auto fixed-top" id="deleteThisItem">
-    <div class="card" style="z-index: 99999; padding: 15px; border-radius: 0px; border: 1px solid black;">
-    <button type="button" id="delete" class="close text-danger d-block ml-auto" aria-label="Close" style="display: flex;">
-      <span aria-hidden="true">&times;</span>
-  </button>
-    <?php while ($resultArray  = mysqli_fetch_assoc($result)) : ?>
-    <div class="myHover">
-      <p><?php echo $resultArray['flying_from']; ?> <?php echo $resultArray['flying_to']; ?></p>
-      <p class="text-muted" style="font-size: 12px;"><i><?php echo $resultArray['departure_date']; ?></i> <i><?php echo $resultArray['arrival_date']; ?></i></p>
-    </div>
-    <?php endwhile; ?>
-    <?php endif; ?>
-    </div>
-  </div>
-  <?php //else : ?>
-  <?php if (mysqli_num_rows($result) == 0) : ?>
-    <div class="col-md-3 d-block ml-auto fixed-top" id="deleteItemTwo">
-      <div class="card"  style="z-index: 99999; padding: 15px; border-radius: 0px; border: 1px solid black;">
-        <button type="button" class="close text-danger d-block ml-auto" title="Exit" aria-label="Close" style="display: flex;" onclick="remove()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <p>No search result</p>
-      </div>
-    </div>
-  <?php endif; ?>
-  <?php endif; ?>
   <div class="mask">
-    <div class="bg-img" id="bgImg" style="margin-top: -200px; padding-top: 300px;">
+    <div class="bg-img" id="bgImg">
       <div class="container" style="display: block;">
         <div class="row">
-          <div class="col-md-5">
+          <div class="col-md-5" style="margin-top: 150px;">
             <h1 id="makeWhite2">Make Your Reservation</h1>
             <p class="text-bright">Lorem ipsum dolor sit amet consectetur adipisicing elit.lorem ipsum dolor sit amet recrtum lactum Cupiditate laboriosam numquam at. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam voluptatum ea a fugiat libero, dignissimos cumque veniam qui ratione dolor odit nobis. Accusantium delectus velit soluta quibusdam dolore alias vel.</p>
           </div>
-          <div class="col-md-7 col-md-offset-1">
+          <div class="col-md-7 col-md-offset-1" style="margin-top: 150px;">
             <div class="card" style="border-radius: 0px; padding: 15px 15px 15px 15px;">
               <form action="index.php" method="get">
                 <div class="form-group">
