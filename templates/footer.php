@@ -11,10 +11,10 @@
             <div class="col-md-6 mb-4">
                 <h5 class="text-responsive text-light">Follow us on social media.</h5>
                 <p class="text-muted">Get the latest new from our social media handles and stay ahead with the latest news and updates.</p>
-                <a href="#"><i class="fab fa-facebook text-primary" style="font-size: 40px; margin-right: 10px;"> /</i></a>
-                <a href="#"><i class="fab fa-instagram text-primary" style="font-size: 40px; margin-right: 10px;"> /</i></a>
-                <a href="#"><i class="fab fa-twitter text-primary" style="font-size: 40px; margin-right: 10px;"> /</i></a>
-                <a href="#"><i class="fab fa-youtube text-primary" style="font-size: 40px;"></i></a>
+                <a href="#"><i class="fab fa-facebook text-white" style="font-size: 40px; margin-right: 10px;"> </i></a>
+                <a href="#"><i class="fab fa-instagram text-white" style="font-size: 40px; margin-right: 10px;"> </i></a>
+                <a href="#"><i class="fab fa-twitter text-white" style="font-size: 40px; margin-right: 10px;"> </i></a>
+                <a href="#"><i class="fab fa-youtube text-white" style="font-size: 40px;"></i></a>
             </div>
         </div>
     </div>

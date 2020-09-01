@@ -53,17 +53,17 @@
     </div>
   </nav>
   <div class="mask">
-    <div class="bg-img" id="bgImg">
+    <div class="bg-img" id="bgImg" style="padding-top: 120px;">
       <div class="container" style="display: block;">
         <div class="row">
-          <div class="col-md-5" style="margin-top: 125px;">
+          <div class="col-md-5">
             <h1 id="makeWhite2">Make Your Reservation</h1>
             <h4 class="text-white">The home of the most affordable <b style="border: 1px solid white; padding: 5px; background-color: black; font-size:20px;">Flights</b></h4>
             <p class="text-bright">Lorem ipsum dolor sit amet consectetur adipisicing elit.lorem ipsum dolor sit amet recrtum lactum Cupiditate laboriosam numquam at. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam voluptatum ea a fugiat libero, dignissimos cumque veniam qui ratione dolor odit nobis. Accusantium delectus velit soluta quibusdam dolore alias vel.</p>
             <a hewf="#" class="btn btn-dark ml-auto">Get started</a>
             <a hewf="#" class="btn btn-dark mr-auto">Need help ?</a>
           </div>
-          <div class="col-md-7 col-md-offset-1" style="margin-top: 125px;">
+          <div class="col-md-7 col-md-offset-1">
             <div class="card" style="border-radius: 0px; padding: 15px 15px 15px 15px;">
               <form action="index.php" method="get">
                 <div class="form-group">
