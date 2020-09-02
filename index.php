@@ -42,124 +42,124 @@
   }
 </script>
 <body onload="populateSelect()" id="body">
-  <nav class="navbar navbar-dark sticky-top scrolling-navbar" id="dark" style="background-color: #779add; box-shadow: none;">
-    <a href="index.php" class="navbar-brand">Saffron</a>
-    <div class="d-flex mx-auto">
-      <i class="fab fa-facebook text-white" style="font-size: 30px; margin-right: 20px;"></i>
-      <i class="fab fa-instagram text-white" style="font-size: 30px; margin-right: 20px;"></i>
-      <i class="fab fa-twitter text-white" style="font-size: 30px; margin-right: 20px;"></i>
-      <i class="fab fa-whatsapp text-white" style="font-size: 30px; margin-right: 20px;"></i>
-      <i class="fab fa-messenger text-white" style="font-size: 30px;"></i>
-    </div>
-  </nav>
-  <div class="mask">
-    <div class="bg-img" id="bgImg" style="padding-top: 120px;">
-      <div class="container" style="display: block;">
-        <div class="row">
-          <div class="col-md-5">
-            <h1 id="makeWhite2">Make Your Reservation</h1>
-            <h4 class="text-white">The home of the most affordable <b style="border: 1px solid white; padding: 5px; background-color: black; font-size:20px;">Flights</b></h4>
-            <p class="text-bright">Lorem ipsum dolor sit amet consectetur adipisicing elit.lorem ipsum dolor sit amet recrtum lactum Cupiditate laboriosam numquam at. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam voluptatum ea a fugiat libero, dignissimos cumque veniam qui ratione dolor odit nobis. Accusantium delectus velit soluta quibusdam dolore alias vel.</p>
-            <a hewf="#" class="btn btn-dark ml-auto">Get started</a>
-            <a hewf="#" class="btn btn-dark mr-auto">Need help ?</a>
-          </div>
-          <div class="col-md-7 col-md-offset-1">
-            <div class="card" style="border-radius: 0px; padding: 15px 15px 15px 15px;">
-              <form action="index.php" method="get">
-                <div class="form-group">
-                  <div class="form-checkbox">
-                    <input type="radio" id="roundtrip" name="flight-type" checked onclick="deleteInput()"> One Way
-                    <label for="one-way">
-                      <input type="radio" id="one-way" name="flight-type" onclick="restoreInput()"> Round trip
-                    </label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
+      <nav class="navbar navbar-dark sticky-top scrolling-navbar" id="dark" style="background-color: #779add; box-shadow: none;">
+        <a href="index.php" class="navbar-brand">Saffron</a>
+        <div class="d-flex mx-auto">
+          <i class="fab fa-facebook text-white" style="font-size: 30px; margin-right: 20px;"></i>
+          <i class="fab fa-instagram text-white" style="font-size: 30px; margin-right: 20px;"></i>
+          <i class="fab fa-twitter text-white" style="font-size: 30px; margin-right: 20px;"></i>
+          <i class="fab fa-whatsapp text-white" style="font-size: 30px; margin-right: 20px;"></i>
+          <i class="fab fa-messenger text-white" style="font-size: 30px;"></i>
+        </div>
+      </nav>
+      <div class="mask">
+        <div class="bg-img" id="bgImg" style="padding-top: 120px;">
+          <div class="container" style="display: block;">
+            <div class="row">
+              <div class="col-md-5">
+                <h1 id="makeWhite2">Make Your Reservation</h1>
+                <h4 class="text-white">The home of the most affordable <b style="border: 1px solid white; padding: 5px; background-color: black; font-size:20px;">Flights</b></h4>
+                <p class="text-bright">Lorem ipsum dolor sit amet consectetur adipisicing elit.lorem ipsum dolor sit amet recrtum lactum Cupiditate laboriosam numquam at. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam voluptatum ea a fugiat libero, dignissimos cumque veniam qui ratione dolor odit nobis. Accusantium delectus velit soluta quibusdam dolore alias vel.</p>
+                <a hewf="#" class="btn btn-dark ml-auto">Get started</a>
+                <a hewf="#" class="btn btn-dark mr-auto">Need help ?</a>
+              </div>
+              <div class="col-md-7 col-md-offset-1">
+                <div class="card" style="border-radius: 0px; padding: 15px 15px 15px 15px;">
+                  <form action="index.php" method="get">
                     <div class="form-group">
-                      <span class="form-label text-muted">Flying from</span>
-                      <select class="form-control" name="flying_from" placeholder="City or airport" id="from" onchange="populateSecond()" style="border-radius: 0px;">
-                        <!-- <option disabled selected>-- Choose country --</option> -->
-                      </select>
+                      <div class="form-checkbox">
+                        <input type="radio" id="roundtrip" name="flight-type" checked onclick="deleteInput()"> One Way
+                        <label for="one-way">
+                          <input type="radio" id="one-way" name="flight-type" onclick="restoreInput()"> Round trip
+                        </label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <span class="form-label text-muted">Flying from</span>
+                          <select class="form-control" name="flying_from" placeholder="City or airport" id="from" onchange="populateSecond()" style="border-radius: 0px;">
+                            <!-- <option disabled selected>-- Choose country --</option> -->
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <span class="form-label text-muted">Flying to</span>
+                          <select class="form-control" name="flying_to" placeholder="City or airport" id="to" style="border-radius: 0px;">
+                            <!-- <option disabled selected>-- Choose country --</option> -->
+                          </select>
+                        </div>
+                      </div>
+                    <!-- </div> -->
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <span class="form-label text-muted">Departing</span>
+                        <input class="form-control" name="departure_date" type="date">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <span class="form-label text-muted">Returning</span>
+                        <input class="form-control" name="arrival_date" type="date" id="deleteItem" disabled>
+                      </div>
+                    </div>
+                  </div>		
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <span class="form-label text-muted">Adults (18+)</span>
+                        <select class="form-control" name="number_of_adults" style="border-radius: 0px;">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <span class="form-label text-muted">Children</span>
+                        <select class="form-control" name="number_of_children" style="border-radius: 0px;">
+                          <option>0</option>
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                          <option>6</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <span class="form-label text-muted">Travel class</span>
+                        <select class="form-control" name="flight_class" style="border-radius: 0px;">
+                          <option>Economy class</option>
+                          <option>Business class</option>
+                          <option>Premium class</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <span class="form-label text-muted">Flying to</span>
-                      <select class="form-control" name="flying_to" placeholder="City or airport" id="to" style="border-radius: 0px;">
-                        <!-- <option disabled selected>-- Choose country --</option> -->
-                      </select>
-                    </div>
-                  </div>
-                <!-- </div> -->
+                  <button class="btn peach-gradient" style="border-radius: 0px;" type="submit" name="submit">Show flights</button>
+                </form>
               </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <span class="form-label text-muted">Departing</span>
-                    <input class="form-control" name="departure_date" type="date">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <span class="form-label text-muted">Returning</span>
-                    <input class="form-control" name="arrival_date" type="date" id="deleteItem" disabled>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <span class="form-label text-muted">Adults (18+)</span>
-                    <select class="form-control" name="number_of_adults" style="border-radius: 0px;">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <span class="form-label text-muted">Children</span>
-                    <select class="form-control" name="number_of_children" style="border-radius: 0px;">
-                      <option>0</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <span class="form-label text-muted">Travel class</span>
-                    <select class="form-control" name="flight_class" style="border-radius: 0px;">
-                      <option>Economy class</option>
-                      <option>Business class</option>
-                      <option>Premium class</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <button class="btn peach-gradient" style="border-radius: 0px;" type="submit" name="submit">Show flights</button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-  <br>
-  <div class="container">
-    <div class="row">
-        <?php if(isset($_GET['submit'])) : ?>
-        <?php
-          if($result == TRUE) :
-            while ($row = mysqli_fetch_array($result)) :
-        ?>
-        <div class="col-md-3">
+      <br>
+      <div class="container">
+        <div class="row">
+          <?php if(isset($_GET['submit'])) : ?>
+          <?php
+            if($result == TRUE) :
+              while ($row = mysqli_fetch_array($result)) :
+          ?>
+          <div class="col-md-3">
             <div class="card mx-auto">
               <div class="card-body">
                 <div class="text-center">
@@ -181,7 +181,7 @@
                   <p class="text-primary"><?php echo $row['flight_class'];?></p>
                   <p class="text-muted" style="font-size: 15px;"><?php echo $row['number_of_adults']; ?> Adults, <?php echo $row['number_of_children']; ?> Children</p>
                 </div>
-               
+                
                 <a class="btn btn-white btn-outline-dark waves-effect btn-sm d-block mx-auto" href="flightDetails.php?id=<?php echo $row['id']; ?>">
                   Book Flight  <i class="fa fa-plane-departure"></i>
                 </a>
@@ -190,134 +190,60 @@
             <br>
           </div>
           <?php endwhile; ?>
-            <?php if (mysqli_num_rows($result) == 0) : ?>
-              <div class="container" id="delete">
-                <div class="col-md-6 mx-auto">
-                  <div class="card" style="padding: 15px;">
-                    <button type="button" class="close text-danger" aria-label="Close" style="display: flex;" onclick="deleteItem()">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="text-center text-primary"><?php echo "No search results"; ?></h4>
-                    <p class="text-center text-muted">Try checking your keywords and searching again</p>
-                  </div>
+        </div>
+      </div>
+          <?php if (mysqli_num_rows($result) == 0) : ?>
+            <div class="container" id="delete">
+              <div class="col-md-6 mx-auto">
+                <div class="card" style="padding: 15px;">
+                  <button type="button" class="close text-danger" aria-label="Close" style="display: flex;" onclick="deleteItem()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="text-center text-primary"><?php echo "No search results"; ?></h4>
+                  <p class="text-center text-muted">Try checking your keywords and searching again</p>
                 </div>
-              <br><br><br>
               </div>
-            <?php endif; ?>
+            <br><br><br>
+            </div>
           <?php endif; ?>
-        </div>
-      </div>
-    </div>          
-    <?php endif; ?>
-    <div class="container flex-center margin-responsive">
-        <div class="card text-center">
-            <div class="card-body" id="card">
-              <h1 class="card-title">Card</h1>
-              <button class="btn btn-unique" id="delete">Delete</button>
-              <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo accusamus eius quisquam architecto mollitia magni numquam veritatis ea dignissimos.</p>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-    <br>
-      <h1 class="text-center" id="makeWhite">Top Locations</h1>
-      <div class="row">
-        <div class="col-md-4">
-          <br><br>
-          <div class="card">
-            <img src="imgs/top_place1.jpg" alt="" class="top-pic" style="height: 350px;">
-            <h3 class="text-center text-primary display-hover" style="margin-top: -175px; z-index:1;">North east London</h3>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <br><br>
-          <div class="card">
-            <img src="imgs/top_place2.jpg" alt="" class="top-pic" style="height: 350px;">
-          </div>
-        </div>
-        <div class="col-md-4">
-          <br><br>
-          <div class="card">
-            <img src="imgs/top_place3.jpg" alt="" class="top-pic" style="height: 350px;">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <br><br>
-          <div class="card">
-            <img src="imgs/top_place2.jpg" alt="" class="top-pic" style="height: 350px;">
-          </div>
-        </div>
-        <div class="col-md-4">
-          <br><br>
-          <div class="card">
-            <img src="imgs/top_place3.jpg" alt="" class="top-pic" style="height: 350px;">
-          </div>
-        </div>
-        <div class="col-md-4">
-          <br><br>
-          <div class="card">
-            <img src="imgs/top_place1.jpg" alt="" class="top-pic" style="height: 350px;">
-          </div>
-        </div>
+        <?php endif; ?>
       </div>
     </div>
-  <div class="container">
-    <section class="text-center my-5 p-1">
-      <h2 class="h1-responsive font-weight-bold my-5" id="makeWhite1">Our Customers Say...</h2>
-      <p class="dark-grey-text w-responsive mx-auto mb-5" id="makeWhite">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam
-        eum porro a pariatur veniam.</p>
-      <div class="row">
-        <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
-          <div class="card testimonial-card">
-            <div class="card-up info-color"></div>
-            <div class="avatar mx-auto white">
-              <img src="imgs/user2-160x160.jpg" class="rounded-circle img-fluid">
-            </div>
-            <div class="card-body">
-              <!--Name-->
-              <h4 class="font-weight-bold mb-4">John Doe</h4>
-              <hr>
-              <!--Quotation-->
-              <p class="dark-grey-text mt-4"><i class="fas fa-quote-left pr-2"></i>Lorem ipsum dolor sit amet eos
-                adipisci, consectetur adipisicing elit.</p>
-            </div>
-          </div>
+  </div>          
+  <?php endif; ?>
+  <div class="container-fluid bg-light" style="padding: 100px;">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card" style="border-radius: 0px; padding: 20px;">
+          <h1 class="text-muted text-center">Card</h1>
+          <p class="text-muted text-center">Text subtitltle rectrum lactum for the text lorem ipsum dolor sit amet rectrum lactum 
+          la dolor ets tes mi amet
+          </p>
+          <button class="btn btn-grey">Book</button>
         </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="border-radius: 0px; padding: 20px;">
+          <h1 class="text-muted text-center">Card</h1>
+          <p class="text-muted text-center">Text subtitltle rectrum lactum for the text lorem ipsum dolor sit amet rectrum lactum 
+          la dolor ets tes mi amet
+          </p>
+          <button class="btn btn-grey">Book</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="border-radius: 0px; padding: 20px;">
+          <h1 class="text-muted text-center">Card</h1>
+          <p class="text-muted text-center">Text subtitltle rectrum lactum for the text lorem ipsum dolor sit amet rectrum lactum 
+          la dolor ets tes mi amet
+          </p>
+          <button class="btn btn-grey">Book</button>
+        </div>
+      </div>
 
-        <div class="col-lg-4 col-md-6 mb-md-0 mb-4">
-          <div class="card testimonial-card">
-            <div class="avatar mx-auto white">
-              <img src="imgs/user2-160x160.jpg" class="rounded-circle img-fluid">
-            </div>
-            <div class="card-body">
-              <h4 class="font-weight-bold mb-4">Anna Aston</h4>
-              <hr>
-              <p class="dark-grey-text mt-4"><i class="fas fa-quote-left pr-2"></i>Neque cupiditate assumenda in
-                maiores repudiandae mollitia.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="card testimonial-card">
-            <div class="avatar mx-auto white">
-              <img src="imgs/user2-160x160.jpg" class="rounded-circle img-fluid">
-            </div>
-            <div class="card-body">
-              <h4 class="font-weight-bold mb-4">Maria Kate</h4>
-              <hr>
-              <p class="dark-grey-text mt-4"><i class="fas fa-quote-left pr-2"></i>Delectus impedit saepe officiis
-                ab aliquam repellat rem unde ducimus.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
   </div>
-  </div>
-</div>
-  </section>
+    
   <?php include('templates/footer.php') ?>
   <!-- JQuery -->
   <script type="text/javascript" src="js/jquery.min.js"></script>
