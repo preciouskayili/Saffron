@@ -190,26 +190,28 @@
             <br>
           </div>
           <?php endwhile; ?>
+          <?php endif; ?>
+          <?php endif; ?>
         </div>
       </div>
-          <?php if (mysqli_num_rows($result) == 0) : ?>
-            <div class="container" id="delete">
-              <div class="col-md-6 mx-auto">
-                <div class="card" style="padding: 15px;">
-                  <button type="button" class="close text-danger" aria-label="Close" style="display: flex;" onclick="deleteItem()">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <h4 class="text-center text-primary"><?php echo "No search results"; ?></h4>
-                  <p class="text-center text-muted">Try checking your keywords and searching again</p>
-                </div>
-              </div>
-            <br><br><br>
-            </div>
-          <?php endif; ?>
-        <?php endif; ?>
+      <?php if (isset($_GET['submit'])) : ?>
+      <?php if (mysqli_num_rows($result) == 0) : ?>
+      <div class="container" id="delete">
+        <div class="col-md-6 mx-auto">
+          <div class="card" style="padding: 15px;">
+            <button type="button" class="close text-danger" aria-label="Close" style="display: flex;" onclick="deleteItem()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="text-center text-primary"><?php echo "No search results"; ?></h4>
+            <p class="text-center text-muted">Try checking your keywords and searching again</p>
+          </div>
+        </div>
+        <br><br><br>
+      </div>
       </div>
     </div>
-  </div>          
+  </div>   
+  <?php endif; ?>
   <?php endif; ?>
   <div class="container-fluid bg-light" style="padding: 100px;">
     <div class="row">
