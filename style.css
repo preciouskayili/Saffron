@@ -6,7 +6,7 @@ input, select{
 	border-radius: 0px !important;
 }
 .bg-img {
-	min-height: 821px;
+	min-height: 623px;
 	background-color: #779add;
 }
 p.myHover:hover {
@@ -27,11 +27,6 @@ p.myHover:hover {
 	display: block !important;
 	z-index: 1 !important;
 	/* opacity: 1 !important; */
-}
-@media only screen and (max-device-width: 1366px) {
-    .parallax {
-        background-attachment: scroll !important;
-    }
 }
 
 p.text-bright {

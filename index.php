@@ -33,7 +33,6 @@
       // document.getElementById("dark").classList.style.boxShadow = "none";
       // document.getElementById("logo").style.fontSize = "25px";
       document.getElementById("dark").style.boxShadow = "1px 1px 3px 4px #83808079";
-      console.log("Navbar");
     } else {
       document.getElementById("dark").style.backgroundColor = "#779add";
       document.getElementById("dark").style.boxShadow = "none";
@@ -45,11 +44,12 @@
       <nav class="navbar navbar-dark sticky-top scrolling-navbar" id="dark" style="background-color: #779add; box-shadow: none;">
         <a href="index.php" class="navbar-brand">Saffron</a>
         <div class="d-flex mx-auto">
-          <i class="fab fa-facebook text-white" style="font-size: 30px; margin-right: 20px;"></i>
-          <i class="fab fa-instagram text-white" style="font-size: 30px; margin-right: 20px;"></i>
-          <i class="fab fa-twitter text-white" style="font-size: 30px; margin-right: 20px;"></i>
-          <i class="fab fa-whatsapp text-white" style="font-size: 30px; margin-right: 20px;"></i>
-          <i class="fab fa-messenger text-white" style="font-size: 30px;"></i>
+          <i class="fab fa-facebook text-white" style="font-size: 20px; margin-right: 20px;"></i>
+          <i class="fab fa-instagram text-white" style="font-size: 20px; margin-right: 20px;"></i>
+          <i class="fab fa-twitter text-white" style="font-size: 20px; margin-right: 20px;"></i>
+          <i class="fab fa-whatsapp text-white" style="font-size: 20px; margin-right: 20px;"></i>
+          <i class="fab fa-linkedin text-white" style="font-size: 20px; margin-right: 20px;"></i>
+          <i class="fa fa-envelope text-white" style="font-size: 20px;"></i>
         </div>
       </nav>
       <div class="mask">
@@ -60,8 +60,8 @@
                 <h1 id="makeWhite2">Make Your Reservation</h1>
                 <h4 class="text-white">The home of the most affordable <b style="border: 1px solid white; padding: 5px; background-color: black; font-size:20px;">Flights</b></h4>
                 <p class="text-bright">Lorem ipsum dolor sit amet consectetur adipisicing elit.lorem ipsum dolor sit amet recrtum lactum Cupiditate laboriosam numquam at. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam voluptatum ea a fugiat libero, dignissimos cumque veniam qui ratione dolor odit nobis. Accusantium delectus velit soluta quibusdam dolore alias vel.</p>
-                <a hewf="#" class="btn btn-dark ml-auto">Get started</a>
-                <a hewf="#" class="btn btn-dark mr-auto">Need help ?</a>
+                <a hewf="#" class="btn btn-md btn-outline-white btn-dark">Get started</a>
+                <a hewf="#" class="btn btn-md btn-outline-white btn-dark">Need help ?</a>
               </div>
               <div class="col-md-7 col-md-offset-1">
                 <div class="card" style="border-radius: 0px; padding: 15px 15px 15px 15px;">
@@ -213,36 +213,35 @@
   </div>   
   <?php endif; ?>
   <?php endif; ?>
-  <div class="container-fluid bg-light" style="padding: 100px;">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card" style="border-radius: 0px; padding: 20px;">
-          <h1 class="text-muted text-center">Card</h1>
-          <p class="text-muted text-center">Text subtitltle rectrum lactum for the text lorem ipsum dolor sit amet rectrum lactum 
-          la dolor ets tes mi amet
-          </p>
-          <button class="btn btn-grey">Book</button>
+  <div class="container-fluid bg-light py-5 px-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card" style="border-radius: 0px; padding: 20px; margin-bottom: 10px;">
+            <h1 class="text-muted text-center">Card</h1>
+            <p class="text-muted text-center">Text subtitltle rectrum lactum for the text lorem ipsum dolor sit amet rectrum lactum 
+            </p>
+            <button class="btn btn-md btn-grey waves-effect">Book</button>
+          </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card" style="border-radius: 0px; padding: 20px;">
-          <h1 class="text-muted text-center">Card</h1>
-          <p class="text-muted text-center">Text subtitltle rectrum lactum for the text lorem ipsum dolor sit amet rectrum lactum 
-          la dolor ets tes mi amet
-          </p>
-          <button class="btn btn-grey">Book</button>
+        <div class="col-md-4">
+          <div class="card" style="border-radius: 0px; padding: 20px; margin-bottom: 10px;">
+            <h1 class="text-muted text-center">Card</h1>
+            <p class="text-muted text-center">Text subtitltle rectrum lactum for the text lorem ipsum dolor sit amet rectrum lactum 
+            </p>
+            <button class="btn btn-md btn-grey waves-effect">Book</button>
+          </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card" style="border-radius: 0px; padding: 20px;">
-          <h1 class="text-muted text-center">Card</h1>
-          <p class="text-muted text-center">Text subtitltle rectrum lactum for the text lorem ipsum dolor sit amet rectrum lactum 
-          la dolor ets tes mi amet
-          </p>
-          <button class="btn btn-grey">Book</button>
+        <div class="col-md-4">
+          <div class="card" style="border-radius: 0px; padding: 20px;">
+            <h1 class="text-muted text-center">Card</h1>
+            <p class="text-muted text-center">Text subtitltle rectrum lactum for the text lorem ipsum dolor sit amet rectrum lactum 
+            </p>
+            <button class="btn btn-md btn-grey waves-effect">Book</button>
+          </div>
         </div>
-      </div>
 
+      </div>
     </div>
   </div>
     
