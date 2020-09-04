@@ -97,7 +97,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <span class="form-label text-muted">Departing</span>
-                        <input class="form-control" name="departure_date" type="date">
+                        <input class="form-control" id="departureDate" name="departure_date" type="date">
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -111,7 +111,7 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <span class="form-label text-muted">Adults (18+)</span>
-                        <select class="form-control" name="number_of_adults" style="border-radius: 0px;">
+                        <select class="form-control" id="numberOfAdults" name="number_of_adults" style="border-radius: 0px;">
                           <option>1</option>
                           <option>2</option>
                           <option>3</option>
@@ -121,7 +121,7 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <span class="form-label text-muted">Children</span>
-                        <select class="form-control" name="number_of_children" style="border-radius: 0px;">
+                        <select class="form-control" id="numberOfChildren" name="number_of_children" style="border-radius: 0px;">
                           <option>0</option>
                           <option>1</option>
                           <option>2</option>
@@ -135,7 +135,7 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <span class="form-label text-muted">Travel class</span>
-                        <select class="form-control" name="flight_class" style="border-radius: 0px;">
+                        <select class="form-control" id="flightClass" name="flight_class" style="border-radius: 0px;">
                           <option>Economy class</option>
                           <option>Business class</option>
                           <option>Premium class</option>
@@ -173,8 +173,9 @@
                 <div class="text-center">
                   <h5><?php echo $row['arrival_time'];?></h5>
                   <p class="text-muted"><?php echo $row['flying_to'];?></p>
-                  <?php if(empty($arrival_date)) : ?>
+                  <?php if (isset($_GET['arrival_date'])) : ?>
                   <p class="text-muted"><?php echo $row['arrival_date'];?></p>
+                  <?php else : //Do nothing ?>
                   <?php endif; ?>
                 </div>
                 <div class="text-center">
@@ -196,10 +197,10 @@
       </div>
       <?php if (isset($_GET['submit'])) : ?>
       <?php if (mysqli_num_rows($result) == 0) : ?>
-      <div class="container" id="delete">
+      <div class="container" id="deleteEmptyResult">
         <div class="col-md-6 mx-auto">
           <div class="card" style="padding: 15px;">
-            <button type="button" class="close text-danger" aria-label="Close" style="display: flex;" onclick="deleteItem()">
+            <button type="button" class="close text-danger" id="deleteThis" aria-label="Close" style="display: flex;">
               <span aria-hidden="true">&times;</span>
             </button>
             <h4 class="text-center text-primary"><?php echo "No search results"; ?></h4>
