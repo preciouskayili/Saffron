@@ -65,13 +65,15 @@
               </div>
               <div class="col-md-7 col-md-offset-1">
                 <div class="card" style="border-radius: 0px; padding: 15px 15px 15px 15px;">
-                  <form action="index.php" method="get">
+                  <form action="index.php" method="post">
                     <div class="form-group">
                       <div class="form-checkbox">
                         <input type="radio" id="roundtrip" name="flight-type" checked onclick="deleteInput()"> One Way
-                        <label for="one-way">
-                          <input type="radio" id="one-way" name="flight-type" onclick="restoreInput()"> Round trip
-                        </label>
+                        <div class="radio">
+                          <label for="one-way">
+                            <input type="radio" id="one-way" name="flight-type" onclick="restoreInput()"> Round trip
+                          </label>
+                        </div>
                       </div>
                     </div>
                     <div class="row">
@@ -154,7 +156,7 @@
       <br>
       <div class="container">
         <div class="row">
-          <?php if(isset($_GET['submit'])) : ?>
+          <?php if(isset($_POST['submit'])) : ?>
           <?php
             if($result == TRUE) :
               while ($row = mysqli_fetch_array($result)) :
@@ -173,7 +175,7 @@
                 <div class="text-center">
                   <h5><?php echo $row['arrival_time'];?></h5>
                   <p class="text-muted"><?php echo $row['flying_to'];?></p>
-                  <?php if (isset($_GET['arrival_date'])) : ?>
+                  <?php if (isset($_POST['arrival_date'])) : ?>
                   <p class="text-muted"><?php echo $row['arrival_date'];?></p>
                   <?php else : //Do nothing ?>
                   <?php endif; ?>
@@ -195,7 +197,7 @@
           <?php endif; ?>
         </div>
       </div>
-      <?php if (isset($_GET['submit'])) : ?>
+      <?php if (isset($_POST['submit'])) : ?>
       <?php if (mysqli_num_rows($result) == 0) : ?>
       <div class="container" id="deleteEmptyResult">
         <div class="col-md-6 mx-auto">
@@ -245,7 +247,18 @@
       </div>
     </div>
   </div>
-    
+  <div class="container" style="margin: 15px;">
+    <div class="col-md-8 d-block mx-auto">
+        <div class="card" style="padding: 15px;">
+			<form action="">
+				<input type="text" class="form-control">
+				<div class="input-append">
+					<button class="btn btn-white btn-outline-black btn-md d-flex mx-auto">Sign Up</button>
+				</div>
+			</form>
+		</div>
+    </div>
+  </div>
   <?php include('templates/footer.php') ?>
   <!-- JQuery -->
   <script type="text/javascript" src="js/jquery.min.js"></script>
