@@ -69,11 +69,9 @@
                     <div class="form-group">
                       <div class="form-checkbox">
                         <input type="radio" id="roundtrip" name="flight-type" checked onclick="deleteInput()"> One Way
-                        <div class="radio">
-                          <label for="one-way">
-                            <input type="radio" id="one-way" name="flight-type" onclick="restoreInput()"> Round trip
-                          </label>
-                        </div>
+                        <label for="one-way">
+                          <input type="radio" id="one-way" name="flight-type" onclick="restoreInput()"> Round trip
+                        </label>
                       </div>
                     </div>
                     <div class="row">
@@ -248,16 +246,17 @@
     </div>
   </div>
   <div class="container" style="margin: 15px;">
-    <div class="col-md-8 d-block mx-auto">
-        <div class="card" style="padding: 15px;">
-			<form action="">
-				<input type="text" class="form-control">
-				<div class="input-append">
-					<button class="btn btn-white btn-outline-black btn-md d-flex mx-auto">Sign Up</button>
-				</div>
-			</form>
-		</div>
-    </div>
+    <!-- SEARCH FORM -->
+    <form class="form-inline ml-3">
+      <div class="input-group input-group-sm">
+        <input class="form-control" style="border-right: 0px;" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="submit" style="box-shadow: none;">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
   <?php include('templates/footer.php') ?>
   <!-- JQuery -->

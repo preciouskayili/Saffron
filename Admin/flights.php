@@ -28,7 +28,7 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed" onload="populateSelect()">
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -70,9 +70,11 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="../index.php" class="brand-link">
-      <div class="text-white">
-        <i class="text-center fa fa-plane bg-primary" aria-hidden="true" style="width: 40px; height: 40px; font-size: 20px; border-radius: 50%; padding-top: 10px;"></i>
-        <span class="brand-text font-weight-light">Saffron</span>
+      <div class="image">
+        <div class="text-white">
+          <i class="text-center fa fa-plane bg-primary" aria-hidden="true" style="width: 40px; height: 40px; font-size: 20px; border-radius: 50%; padding-top: 10px;"></i>
+          <span class="brand-text font-weight-light">Saffron</span>
+        </div>
       </div>
     </a>
 
@@ -100,13 +102,27 @@
                 Dashboard
               </p>
             </a>
-          <li class="nav-item">
-            <a href="flights.php" class="nav-link active">
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fa fa-plane"></i>
               <p>
                 Flights
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../forms/general.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>One way</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../forms/advanced.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Round trip</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -134,20 +150,172 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
+            <h1 class="m-0 text-dark">Flights</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
+              <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+              <li class="breadcrumb-item active">Flights</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
-    </div>
+	</div>
+	<!-- Edit Modal -->
+	<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add Round trip</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="flights.php" method="post" id="saveForm">
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Flying from</label>
+                        <select class="form-control select2" name="flying_from" style="width: 100%;" id="from" onchange="populateSecond()">
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Flying to</label>
+                        <select class="form-control select2" name="flying_to" style="width: 100%;" id="to">
+                            
+                        </select>
+                    </div>
+                </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Departure date</label>
+                        <input type="date" class="form-control" name="departure_date" id="exampleInputPassword1" placeholder="Password">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Arrival date</label>
+                        <input type="date" class="form-control" name="arrival_date" id="exampleInputPassword1" placeholder="Password">
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="form-group">
+                          <label>Adults(18+)</label>
+                          <select class="form-control select2" name="adults" style="width: 100%;">
+                              <option selected="selected">1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                              <option>6</option>
+                          </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Children</label>
+                            <select class="form-control select2" name="children" style="width: 100%;">
+                                <option selected="selected">1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Travel class</label>
+                            <select class="form-control select2" name="travel_class" style="width: 100%;">
+                                <option selected="selected">Economy class</option>
+                                <option>Business class</option>
+                                <option>Premium class</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Departure time</label>
+                        <input type="text" class="form-control" name="departure_time" id="exampleInputPassword1" placeholder="e.g 8:00 pm">
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Arrival time</label>
+                        <input type="text" class="form-control" name="arrival_time" id="exampleInputPassword1" placeholder="e.g 8:00 am">
+                      </div>
+                    </div>
+
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Flight price</label>
+                        <input type="text" class="form-control" name="flight_price" id="exampleInputPassword1" placeholder="Flight price">
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" name="save" form="saveForm">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
     <!-- /.content-header -->
+    <script>
+      var countries = [
+        "Ghana",
+        "USA",
+        "London",
+        "UK",
+        "Cameron",
+        "Dubai",
+        "Nigeria",
+        "Turkey",
+        "Canada",
+      ];
+      function populateSelect() {
+        var html = "";
+        html += "<option disabled>-- Choose country --</option>";
+        for (let index = 0; index < countries.length; index++) {
+          const element = countries[index];
+          html += "<option value='" + element + "'>" + element + "</option>";
+        }
+
+        $("#from").html(html);
+        $("#fromTwo").html(html);
+      }
+
+      function populateSecond() {
+        var fromValue = document.getElementById("from").value;
+        var fromValueTwo = document.getElementById("fromTwo").value;
+        var html = "";
+        html += "<option disabled>-- Choose country --</option>";
+        for (let index = 0; index < countries.length; index++) {
+          const element = countries[index];
+          if (fromValue != element && fromValueTwo != element) {
+            html += "<option value='" + element + "'>" + element + "</option>";
+          }
+        }
+        $("#to").html(html);
+        $("#toTwo").html(html);
+      }
+    </script>
     <div class="container">
-    <!-- /.row -->
+	<!-- /.row -->
+		<button class="btn btn-primary btn-md d-block ml-auto" data-toggle="modal" data-target="#modal-default" style="margin-bottom: 22px;"><i class="fas fa-plus"></i> Add Flight</button>
         <div class="row">
           <div class="col-12">
             <div class="card">
@@ -192,8 +360,8 @@
                       <td><?php echo $row['number_of_children']; ?></td>
                       <td><?php echo $row['flight_class']; ?></td>
                       <td>
-                        <button class="btn btn-sm btn-dark"><i class="fa fa-eye"></i></button>
-                        <button class="btn btn-sm btn-success"><i class="fas fa-plus"></i></button>
+                        <button class="btn btn-sm btn-dark" name="delete_row"><i class="fa fa-eye"></i></button>
+                        <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
                         <button class="btn btn-sm btn-danger" name="delete"><i class="fas fa-trash"></i></button>
                       </td>
                     </tr>
@@ -209,6 +377,167 @@
         <!-- /.row -->
     </div>
 
+    <!-- /.row -->
+    <div class="modal fade" id="modal-sm">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Default Modal</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="flights.php" method="post" id="secondSaveForm">
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Flying from</label>
+                        <select class="form-control select2" name="flying_from2" style="width: 100%;" id="fromTwo" onchange="populateSecond()">
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Flying to</label>
+                        <select class="form-control select2" name="flying_to2" style="width: 100%;" id="toTwo">
+                            
+                        </select>
+                    </div>
+                </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Departure date</label>
+                        <input type="date" class="form-control" name="departure_date2" id="exampleInputPassword1" placeholder="Password">
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label>Adults(18+)</label>
+                          <select class="form-control select2" name="adults2" style="width: 100%;">
+                              <option selected="selected">1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                              <option>6</option>
+                          </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Children</label>
+                            <select class="form-control select2" name="children2" style="width: 100%;">
+                                <option selected="selected">1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Travel class</label>
+                            <select class="form-control select2" name="travel_class2" style="width: 100%;">
+                                <option selected="selected">Economy class</option>
+                                <option>Business class</option>
+                                <option>Premium class</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Departure time</label>
+                        <input type="text" class="form-control" name="departure_time2" id="exampleInputPassword1" placeholder="e.g 8:00 pm">
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Flight price</label>
+                        <input type="text" class="form-control" name="flight_price2" id="exampleInputPassword1" placeholder="Flight price">
+                      </div>
+                    </div>
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button class="btn btn-primary" name="saveTwo" form="secondSaveForm">Save changes</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+	<div class="container">
+		<button class="btn btn-primary btn-md d-block ml-auto" data-toggle="modal" data-target="#modal-sm" style="margin-bottom: 22px;"><i class="fas fa-plus"></i> Add Flight</button>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">One Way</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Flying from</th>
+                      <th>Flying to</th>
+                      <th>Departing</th>
+                      <th>Returning</th>
+                      <th>Children</th>
+                      <th>Travel class</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php while ($secondRow = mysqli_fetch_assoc($secondResult)) : ?>
+                    <tr>
+                      <td><?php echo $secondRow['id']; ?></td>
+                      <td><?php echo $secondRow['flying_from']; ?></td>
+                      <td><?php echo $secondRow['flying_to']; ?></td>
+                      <td><?php echo $secondRow['departure_date']; ?></td>
+                      <td><?php echo $secondRow['adults']; ?></td>
+                      <td><?php echo $secondRow['children']; ?></td>
+                      <td><?php echo $secondRow['travel_class']; ?></td>
+                      <td>
+                        <button class="btn btn-sm btn-dark"><i class="fa fa-eye"></i></button>
+                        <button class="btn btn-sm btn-success"><i class="fas fa-edit"></i></button>
+                        <button class="btn btn-sm btn-danger" name="delete"><i class="fas fa-trash"></i></button>
+                      </td>
+                    </tr>
+                  <?php endwhile; ?>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+        <!-- /.row -->
+	</div>
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->

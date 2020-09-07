@@ -100,7 +100,7 @@
               </p>
             </a>
           <li class="nav-item">
-            <a href="pages/flights.php" class="nav-link">
+            <a href="flights.php" class="nav-link">
               <i class="nav-icon fa fa-plane"></i>
               <p>
                 Flights
@@ -137,8 +137,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
+              <li class="breadcrumb-item"><a href="index.php">Home</a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
