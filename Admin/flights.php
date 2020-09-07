@@ -336,6 +336,7 @@
                   </thead>
                   <tbody>
                   <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+                    <?php $id = $row['id']; ?>
                     <tr>
                       <td><?php echo $row['id']; ?></td>
                       <td><?php echo $row['flying_from']; ?></td>
@@ -346,7 +347,9 @@
                       <td><?php echo $row['number_of_children']; ?></td>
                       <td><?php echo $row['flight_class']; ?></td>
                       <td>
-                        <button class="btn btn-sm btn-dark" name="delete_row"><i class="fa fa-eye"></i></button>
+                        <form action="index.php" >
+
+                        </form>
                         <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
                         <button class="btn btn-sm btn-danger" name="delete"><i class="fas fa-trash"></i></button>
                       </td>

@@ -25,10 +25,10 @@
 </head>
 <script>
   window.onscroll = function() {scrollFunction()};
-
+  
   function scrollFunction() {
-    if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
-      document.getElementById("dark").style.backgroundColor = "white";
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+      document.getElementById("dark").style.backgroundColor = "black";
       document.getElementById("dark").classList.remove("navbar-transparent");
       // document.getElementById("dark").classList.style.boxShadow = "none";
       // document.getElementById("logo").style.fontSize = "25px";
