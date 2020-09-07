@@ -1,4 +1,4 @@
-<?php include('middleware/indexDataController.php') ?>
+<?php include('middleware/bookingsDataController.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -94,7 +94,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="index.php" class="nav-link active">
+            <a href="index.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -109,7 +109,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="bookings.php" class="nav-link">
+            <a href="bookings.php" class="nav-link active">
               <i class="nav-icon fa fa-credit-card"></i>
               <p>
                 Bookings
@@ -139,78 +139,75 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+              <li class="breadcrumb-item active">Bookings</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+  <div class="container">
+    <!-- /.row -->
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Bookings</h3>
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3><?php echo $numberOfBookings; ?></h3>
-                <p>Number of bookings</p>
+            <div class="card-tools">
+              <div class="input-group input-group-sm" style="width: 150px;">
+                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                </div>
               </div>
-              <div class="icon">
-                <i class="fa fa-credit-card"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3><?php echo $numberOfFlights; ?></h3>
-                <p>Round trip flights</p>
-              </div>
-              <div class="icon">
-                <i class="fa fa-plane-arrival"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
+          <!-- /.card-header -->
+          <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Flight ID</th>
+                  <th>Name</th>
+                  <th>Surname</th>
+                  <th>Phone number</th>
+                  <th>Flying from</th>
+                  <th>Flying to</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php while($row = mysqli_fetch_assoc($result)) : ?>
+                <tr>
+                  <td><?php echo $row['id']; ?></td>
+                  <td><?php echo $row['flight_id']; ?></td>
+                  <td><?php echo $row['name']; ?></td>
+                  <td><?php echo $row['surname']; ?></td>
+                  <td><?php echo $row['phone_number']; ?></td>
+                  <td><?php echo $row['flying_from']; ?></td>
+                  <td><?php echo $row['flying_to']; ?></td>
+                  <td><?php echo $row['status']; ?></td>
+                  <td>
+                    <button class="btn btn-sm btn-secondary" title="View booking"><i class="fa fa-eye"></i></button>
+                    <button class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-trash"></i></button>
+                    <button class="btn btn-sm btn-success" title="Approve flight"><i class="fas fa-check"></i></button>
+                  </td>
+                </tr>
+                <?php endwhile; ?>
+              </tbody>
+            </table>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3><?php echo $numberOfOneWay; ?></h3>
-                <p>One way flights</p>
-              </div>
-              <div class="icon">
-                <i class="fa fa-plane-departure"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3><?php echo $numberOfFlights + $numberOfOneWay; ?></h3>
-                <p>Total flights</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-plus"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
+          <!-- /.card-body -->
         </div>
-        <!-- /.row -->
-        
-
+        <!-- /.card -->
+      </div>
+    </div>
+    <!-- /.row -->
+  </div>
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->

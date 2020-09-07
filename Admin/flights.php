@@ -102,30 +102,16 @@
                 Dashboard
               </p>
             </a>
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item">
+            <a href="flights.php" class="nav-link active">
               <i class="nav-icon fa fa-plane"></i>
               <p>
                 Flights
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../forms/general.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>One way</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../forms/advanced.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Round trip</p>
-                </a>
-              </li>
-            </ul>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="bookings.php" class="nav-link">
               <i class="nav-icon fa fa-credit-card"></i>
               <p>
                 Bookings
@@ -134,9 +120,9 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
+              <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
-                View profile details
+                Log out
               </p>
             </a>
           </li>
@@ -524,7 +510,7 @@
                       <td>
                         <button class="btn btn-sm btn-dark"><i class="fa fa-eye"></i></button>
                         <button class="btn btn-sm btn-success"><i class="fas fa-edit"></i></button>
-                        <button class="btn btn-sm btn-danger" name="delete"><i class="fas fa-trash"></i></button>
+                        <button class="btn btn-sm btn-danger" data-dismiss="modal" aria-label="Close"><i class="fas fa-trash"></i></button>
                       </td>
                     </tr>
                   <?php endwhile; ?>
