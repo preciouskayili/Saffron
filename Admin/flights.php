@@ -343,8 +343,9 @@
                   </thead>
                   <tbody>
                   <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+                    <?php $id = $row['id']; ?>
                     <tr>
-                      <td><?php echo $row['id']; ?></td>
+                      <td><?php echo $id; ?></td>
                       <td><?php echo $row['flying_from']; ?></td>
                       <td><?php echo $row['flying_to']; ?></td>
                       <td><?php echo $row['departure_date']; ?></td>
@@ -358,7 +359,7 @@
                         </form>
                         <button class="btn btn-sm btn-secondary"><i class="fa fa-eye"></i></button>
                         <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
-                        <button class="btn btn-sm btn-danger" name="deleteTableRow" form="deleteRow"><i class="fas fa-trash"></i></button>
+                        <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-danger<?php echo $id; ?>" name="deleteTableRow"><i class="fas fa-trash"></i></button>
                       <?php
                         if (isset($_GET['deleteTableRow'])) {
                           $deleteFlight = $_POST['id_to_delete'];
@@ -368,6 +369,28 @@
                         }
                       ?>
                       </td>
+                    <div class="modal fade" id="modal-danger<?php echo $id; ?>">
+                      <div class="modal-dialog">
+                        <div class="modal-content bg-danger">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Danger Modal</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>One fine body&hellip;</p>
+                          </div>
+                          <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-outline-light">Save changes</button>
+                          </div>
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
                     </tr>
                   <?php endwhile; ?>
                   </tbody>
