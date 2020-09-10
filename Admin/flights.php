@@ -1,4 +1,11 @@
-<?php include("middleware/flightsDataController.php") ?>
+<!-- 
+  ????????????? READ THIS!!!! ?????????
+  DONT NOT DELETE ANY CODE SOME OF THEM WORK AND I DONT KNOW HOW
+  ALSO THE SELECT IS BEING POPULATED FROM THE JAVASCRIPT SO
+  IF YOU REALLY ARE A FOOL DELETE THIS. THANKS FOR READING.
+ -->
+<?php include("middleware/flightsDataController.php"); ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -161,20 +168,20 @@
           <form action="flights.php" method="post" id="saveForm">
               <div class="row">
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Flying from</label>
-                        <select class="form-control select2" name="flying_from" style="width: 100%;" id="from" onchange="populateSecond()">
-                            
-                        </select>
-                    </div>
+                  <div class="form-group">
+                    <label>Flying from</label>
+                    <select class="form-control select2" name="flying_from" style="width: 100%;" id="from" onchange="populateSecond()">
+                          
+                    </select>
+                  </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Flying to</label>
-                        <select class="form-control select2" name="flying_to" style="width: 100%;" id="to">
-                            
-                        </select>
-                    </div>
+                  <div class="form-group">
+                    <label>Flying to</label>
+                    <select class="form-control select2" name="flying_to" style="width: 100%;" id="to">
+                          
+                    </select>
+                  </div>
                 </div>
                     <div class="col-md-6">
                       <div class="form-group">
@@ -300,8 +307,8 @@
       }
     </script>
     <div class="container">
-	<!-- /.row -->
-		<button class="btn btn-primary btn-md d-block ml-auto" data-toggle="modal" data-target="#modal-default" style="margin-bottom: 22px;"><i class="fas fa-plus"></i> Add Flight</button>
+      <!-- /.row -->
+		  <button class="btn btn-primary btn-md d-block ml-auto" data-toggle="modal" data-target="#modal-default" style="margin-bottom: 22px;"><i class="fas fa-plus"></i> Add Flight</button>
         <div class="row">
           <div class="col-12">
             <div class="card">
@@ -336,7 +343,6 @@
                   </thead>
                   <tbody>
                   <?php while ($row = mysqli_fetch_assoc($result)) : ?>
-                    <?php $id = $row['id']; ?>
                     <tr>
                       <td><?php echo $row['id']; ?></td>
                       <td><?php echo $row['flying_from']; ?></td>
@@ -347,11 +353,20 @@
                       <td><?php echo $row['number_of_children']; ?></td>
                       <td><?php echo $row['flight_class']; ?></td>
                       <td>
-                        <form action="index.php" >
-
+                        <form action="flights.php" method="post" id="deleteRow">
+                          <input type="hidden" name="id_to_delete" value="<?php echo $row['id']; ?>"></input>
                         </form>
+                        <button class="btn btn-sm btn-secondary"><i class="fa fa-eye"></i></button>
                         <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
-                        <button class="btn btn-sm btn-danger" name="delete"><i class="fas fa-trash"></i></button>
+                        <button class="btn btn-sm btn-danger" name="deleteTableRow" form="deleteRow"><i class="fas fa-trash"></i></button>
+                      <?php
+                        if (isset($_GET['deleteTableRow'])) {
+                          $deleteFlight = $_POST['id_to_delete'];
+                          echo `$deleteFlight`;
+                          $queryDelete = "DELETE FROM flights WHERE id = $deleteFlight";
+                          mysqli_query($conn,$queryDelete);
+                        }
+                      ?>
                       </td>
                     </tr>
                   <?php endwhile; ?>
