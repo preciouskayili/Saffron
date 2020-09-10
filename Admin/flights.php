@@ -359,7 +359,7 @@
                         </form>
                         <button class="btn btn-sm btn-secondary"><i class="fa fa-eye"></i></button>
                         <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
-                        <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-danger<?php echo $id; ?>" name="deleteTableRow"><i class="fas fa-trash"></i></button>
+                        <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete_<?php echo $id; ?>" name="deleteTableRow"><i class="fas fa-trash"></i></button>
                       <?php
                         if (isset($_GET['deleteTableRow'])) {
                           $deleteFlight = $_POST['id_to_delete'];
@@ -369,7 +369,7 @@
                         }
                       ?>
                       </td>
-                    <div class="modal fade" id="modal-danger<?php echo $id; ?>">
+                    <div class="modal fade" id="delete_<?php echo $id; ?>">
                       <div class="modal-dialog">
                         <div class="modal-content bg-danger">
                           <div class="modal-header">
@@ -380,6 +380,9 @@
                           </div>
                           <div class="modal-body">
                             <p>One fine body&hellip;</p>
+                            <form action="" method="post">
+                              <input type="text" value="<?php echo $id; ?>"></input>
+                            </form>
                           </div>
                           <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
