@@ -360,40 +360,39 @@
                         <button class="btn btn-sm btn-secondary"><i class="fa fa-eye"></i></button>
                         <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
                         <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete_<?php echo $id; ?>" name="deleteTableRow"><i class="fas fa-trash"></i></button>
+                      </td>
+                      <div class="modal fade" id="delete_<?php echo $id; ?>">
+                        <div class="modal-dialog">
+                          <div class="modal-content bg-danger">
+                            <div class="modal-header">
+                              <h4 class="modal-title">Delete</h4>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p><?php $_SESSION['id'] = $id; ?></p>
+                              <p>Are you sure you want to delete this!!</p>
+                              <form action="flights.php" method="post" id="formDelete">
+                                
+                              </form>
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                              <button type="button" class="btn btn-outline-light" data-dismiss="modal">No</button>
+                              <button type="submit" class="btn btn-outline-light" name="deleteButton" form="formDelete">Yes</button>
+                            </div>
+                          </div>
+                          <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                      </div>
+                      <!-- /.modal -->
                       <?php
-                        if (isset($_GET['deleteTableRow'])) {
-                          $deleteFlight = $_POST['id_to_delete'];
-                          echo `$deleteFlight`;
-                          $queryDelete = "DELETE FROM flights WHERE id = $deleteFlight";
+                        if (isset($_POST['deleteButton'])) {
+                          $queryDelete = "DELETE FROM flights WHERE id = $deleteId";
                           mysqli_query($conn,$queryDelete);
                         }
                       ?>
-                      </td>
-                    <div class="modal fade" id="delete_<?php echo $id; ?>">
-                      <div class="modal-dialog">
-                        <div class="modal-content bg-danger">
-                          <div class="modal-header">
-                            <h4 class="modal-title">Danger Modal</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <p>One fine body&hellip;</p>
-                            <form action="" method="post">
-                              <input type="text" value="<?php echo $id; ?>"></input>
-                            </form>
-                          </div>
-                          <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-outline-light">Save changes</button>
-                          </div>
-                        </div>
-                        <!-- /.modal-content -->
-                      </div>
-                      <!-- /.modal-dialog -->
-                    </div>
-                    <!-- /.modal -->
                     </tr>
                   <?php endwhile; ?>
                   </tbody>
