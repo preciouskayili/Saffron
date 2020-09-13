@@ -371,7 +371,6 @@
                               </button>
                             </div>
                             <div class="modal-body">
-                              <p><?php $_SESSION['id'] = $id; ?></p>
                               <p>Are you sure you want to delete this!!</p>
                               <form action="flights.php" method="post" id="formDelete">
                                 
@@ -387,14 +386,15 @@
                         <!-- /.modal-dialog -->
                       </div>
                       <!-- /.modal -->
-                      <?php
-                        if (isset($_POST['deleteButton'])) {
-                          $queryDelete = "DELETE FROM flights WHERE id = $deleteId";
-                          mysqli_query($conn,$queryDelete);
-                        }
-                      ?>
                     </tr>
                   <?php endwhile; ?>
+                    <?php
+                      if (isset($_POST['deleteButton'])) {
+                        $queryDelete = "DELETE FROM flights WHERE id = $id";
+                        mysqli_query($conn,$queryDelete);
+                        // header('Location: flights.php');
+                      }
+                    ?>
                   </tbody>
                 </table>
               </div>
