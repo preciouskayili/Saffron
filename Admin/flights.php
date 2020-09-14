@@ -343,9 +343,9 @@
                   </thead>
                   <tbody>
                   <?php while ($row = mysqli_fetch_assoc($result)) : ?>
-                    <?php $id = $row['id']; ?>
+                    <?php $row['id']; ?>
                     <tr>
-                      <td><?php echo $id; ?></td>
+                      <td><?php echo $_row['id']; ?></td>
                       <td><?php echo $row['flying_from']; ?></td>
                       <td><?php echo $row['flying_to']; ?></td>
                       <td><?php echo $row['departure_date']; ?></td>
@@ -355,13 +355,13 @@
                       <td><?php echo $row['flight_class']; ?></td>
                       <td>
                         <form action="flights.php" method="post" id="deleteRow">
-                          <input type="hidden" name="id_to_delete" value="<?php echo $row['id']; ?>"></input>
+                          
                         </form>
                         <button class="btn btn-sm btn-secondary"><i class="fa fa-eye"></i></button>
                         <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
-                        <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete_<?php echo $id; ?>" name="deleteTableRow"><i class="fas fa-trash"></i></button>
+                        <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" name="deleteTableRow"><i class="fas fa-trash"></i></button>
                       </td>
-                      <div class="modal fade" id="delete_<?php echo $id; ?>">
+                      <div class="modal fade" id="deleteModal">  
                         <div class="modal-dialog">
                           <div class="modal-content bg-danger">
                             <div class="modal-header">
@@ -373,7 +373,7 @@
                             <div class="modal-body">
                               <p>Are you sure you want to delete this!!</p>
                               <form action="flights.php" method="post" id="formDelete">
-                                
+                                <input type="hidden" name="deleteHidden" value="<?php echo $id; ?>"></input>
                               </form>
                             </div>
                             <div class="modal-footer justify-content-between">
@@ -387,14 +387,7 @@
                       </div>
                       <!-- /.modal -->
                     </tr>
-                  <?php endwhile; ?>
-                    <?php
-                      if (isset($_POST['deleteButton'])) {
-                        $queryDelete = "DELETE FROM flights WHERE id = $id";
-                        mysqli_query($conn,$queryDelete);
-                        // header('Location: flights.php');
-                      }
-                    ?>
+                    <?php endwhile; ?>
                   </tbody>
                 </table>
               </div>

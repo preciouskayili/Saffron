@@ -24,15 +24,15 @@
   <!-- <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet"> -->
 </head>
 <script>
-  window.onscroll = function() {scrollFunction()};
+  window.onscroll = () => {scrollFunction()};
   
-  function scrollFunction() {
+  const scrollFunction = ()  => {
     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
       document.getElementById("dark").style.backgroundColor = "black";
       document.getElementById("dark").classList.remove("navbar-transparent");
       // document.getElementById("dark").classList.style.boxShadow = "none";
       // document.getElementById("logo").style.fontSize = "25px";
-      document.getElementById("dark").style.boxShadow = "1px 1px 3px 4px #83808079";
+      document.getElementById("dark").style.boxShadow = "1px 1px 2px 2px #83808079";
     } else {
       document.getElementById("dark").style.backgroundColor = "#779add";
       document.getElementById("dark").style.boxShadow = "none";

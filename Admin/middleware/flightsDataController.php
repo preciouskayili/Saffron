@@ -1,11 +1,20 @@
 <?php
     include("../config/db_connect.php");
 
-    $sql = "SELECT * FROM flights ORDER BY created_at";
-    $query = "SELECT * FROM one_way ORDER BY created_at";
+    $sql = "SELECT * FROM flights";
+    $query = "SELECT * FROM one_way";
 
     $result = mysqli_query($conn,$sql);
     $secondResult = mysqli_query($conn,$query);
+
+    if (isset($_POST['deleteButton'])) {
+      $id_to_delete = $_POST['deleteHidden'];
+      $queryDelete = "DELETE FROM flights WHERE id = $id_to_delete";
+      $conn -> query($queryDelete);
+      if($queryDelete) {
+        header('Location: flights.php');
+      }
+    }
 
   if (isset($_POST['save'])) {
 
