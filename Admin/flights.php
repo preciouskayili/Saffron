@@ -20,6 +20,8 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bbootstrap 4 -->
   <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- MDBootstrap -->
+  <link rel="stylesheet" href="../../css/mdb.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
@@ -159,7 +161,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Add Round trip</h4>
+          <h4 class="modal-title">Add Round trip flight</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -342,10 +344,10 @@
                     </tr>
                   </thead>
                   <tbody>
-                  <?php while ($row = mysqli_fetch_assoc($result)) : ?>
-                    <?php $row['id']; ?>
+                  <?php foreach ($fetchArray as $row) : ?>
                     <tr>
-                      <td><?php echo $_row['id']; ?></td>
+                      <?php $id=$row['id'];?>
+                      <td><?php echo $row['id']; ?></td>
                       <td><?php echo $row['flying_from']; ?></td>
                       <td><?php echo $row['flying_to']; ?></td>
                       <td><?php echo $row['departure_date']; ?></td>
@@ -353,41 +355,44 @@
                       <td><?php echo $row['number_of_adults']; ?></td>
                       <td><?php echo $row['number_of_children']; ?></td>
                       <td><?php echo $row['flight_class']; ?></td>
+                      <script>
+                        document.querySelector("#noReload").addEventListener("click", () => {
+                          event.preventDefault();
+                        })
+                      </script>
                       <td>
-                        <form action="flights.php" method="post" id="deleteRow">
-                          
-                        </form>
+                        <form action="flights.php" method="post" id="editForm"></form>
                         <button class="btn btn-sm btn-secondary"><i class="fa fa-eye"></i></button>
-                        <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
-                        <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" name="deleteTableRow"><i class="fas fa-trash"></i></button>
+                        <button class="btn btn-sm btn-warning" form="editForm" name="update" id="noReload" data-toggle="modal" data-target="#modal-edit<?php echo $id; ?>"><i class="fa fa-edit"></i></button>
+                        <a class="btn btn-sm btn-danger" href="middleware/deleteCode.php?id=<?php echo $id; ?>"><i class="fas fa-trash"></i></a>
                       </td>
-                      <div class="modal fade" id="deleteModal">  
-                        <div class="modal-dialog">
-                          <div class="modal-content bg-danger">
-                            <div class="modal-header">
-                              <h4 class="modal-title">Delete</h4>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <p>Are you sure you want to delete this!!</p>
-                              <form action="flights.php" method="post" id="formDelete">
-                                <input type="hidden" name="deleteHidden" value="<?php echo $id; ?>"></input>
-                              </form>
-                            </div>
-                            <div class="modal-footer justify-content-between">
-                              <button type="button" class="btn btn-outline-light" data-dismiss="modal">No</button>
-                              <button type="submit" class="btn btn-outline-light" name="deleteButton" form="formDelete">Yes</button>
-                            </div>
-                          </div>
-                          <!-- /.modal-content -->
-                        </div>
-                        <!-- /.modal-dialog -->
-                      </div>
-                      <!-- /.modal -->
                     </tr>
-                    <?php endwhile; ?>
+                    <div class="modal fade" id="modal-edit<?php echo $id; ?>">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Update data</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>One fine body&hellip; <?php echo $id; ?></p>
+                            <?php if (isset($_POST['update'])) : ?>
+                              <p><?php "Server connected succesfully" ?></p>
+                            <?php endif; ?>
+                          </div>
+                          <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Update data</button>
+                          </div>
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
+                  <?php endforeach; ?>
                   </tbody>
                 </table>
               </div>
@@ -399,12 +404,14 @@
         <!-- /.row -->
     </div>
 
+
+  <!-- ######################################### First Table for Roundtrip flights ###################################################### -->
     <!-- /.row -->
     <div class="modal fade" id="modal-sm">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Default Modal</h4>
+            <h4 class="modal-title">Add One way flight</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -489,17 +496,20 @@
                     </div>
                   </div>
               </form>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" name="saveTwo" form="secondSaveForm">Save changes</button>
+            </div>
           </div>
-          <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button class="btn btn-primary" name="saveTwo" form="secondSaveForm">Save changes</button>
-          </div>
+          <!-- /.modal-content -->
         </div>
-        <!-- /.modal-content -->
-      </div>
       <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
+
+
+  <!-- ######################################### Second Table for One Way flights ###################################################### -->
 	<div class="container">
 		<button class="btn btn-primary btn-md d-block ml-auto" data-toggle="modal" data-target="#modal-sm" style="margin-bottom: 22px;"><i class="fas fa-plus"></i> Add Flight</button>
         <div class="row">
@@ -527,29 +537,29 @@
                       <th>Flying from</th>
                       <th>Flying to</th>
                       <th>Departing</th>
-                      <th>Returning</th>
+                      <th>Adults</th>
                       <th>Children</th>
                       <th>Travel class</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                  <?php while ($secondRow = mysqli_fetch_assoc($secondResult)) : ?>
+                  <?php foreach ($secondRow as $rowTwo) : ?>
                     <tr>
-                      <td><?php echo $secondRow['id']; ?></td>
-                      <td><?php echo $secondRow['flying_from']; ?></td>
-                      <td><?php echo $secondRow['flying_to']; ?></td>
-                      <td><?php echo $secondRow['departure_date']; ?></td>
-                      <td><?php echo $secondRow['adults']; ?></td>
-                      <td><?php echo $secondRow['children']; ?></td>
-                      <td><?php echo $secondRow['travel_class']; ?></td>
+                      <td><?php echo $rowTwo['id']; ?></td>
+                      <td><?php echo $rowTwo['flying_from']; ?></td>
+                      <td><?php echo $rowTwo['flying_to']; ?></td>
+                      <td><?php echo $rowTwo['departure_date']; ?></td>
+                      <td><?php echo $rowTwo['adults']; ?></td>
+                      <td><?php echo $rowTwo['children']; ?></td>
+                      <td><?php echo $rowTwo['travel_class']; ?></td>
                       <td>
                         <button class="btn btn-sm btn-dark"><i class="fa fa-eye"></i></button>
                         <button class="btn btn-sm btn-success"><i class="fas fa-edit"></i></button>
                         <button class="btn btn-sm btn-danger" data-dismiss="modal" aria-label="Close"><i class="fas fa-trash"></i></button>
                       </td>
                     </tr>
-                  <?php endwhile; ?>
+                  <?php endforeach; ?>
                   </tbody>
                 </table>
               </div>
@@ -602,5 +612,8 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<!-- MDBootstrap Js -->
+<script type="text/javascript" src="../../js/mdb.min.js"></script>
+
 </body>
 </html>

@@ -6,10 +6,6 @@
         $sql = "SELECT * FROM flights WHERE '$searchQuery' = flying_from OR '$searchQuery' = flying_to";
 
         $result = mysqli_query($conn, $sql);
-        
-
-        
-
         // print_r($resultArray);
 
         if (mysqli_num_rows($result) == 0) {

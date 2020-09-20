@@ -1,41 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+html {
+    scroll-behavior: smooth !important;
+}
 body {
+    /* height: 100%; */
     font-family: 'Montserrat', sans-serif !important;
+    /* overflow: hidden; */
 }
 
 input,
 select {
     border-radius: 0px !important;
 }
-
+.marginal {
+    margin-top: 120px;
+}
 .bg-img {
-    min-height: 623px;
-    background-color: #779add;
+    min-height: 625px;
+    background-color: rgb(119, 154, 221);
 }
-
-p.myHover:hover {
-    background-color: #779add;
-}
-
-.top-pic {
-    opacity: 0.8;
-}
-
-.top-pic:hover {
-    opacity: 1;
-}
-
-.display-hover {
-    display: none;
-    /* opacity: 0; */
-}
-
-.display-hover:hover {
-    display: block !important;
-    z-index: 1 !important;
-    /* opacity: 1 !important; */
-}
-
+/* @media (min-width:767px) {
+    body {
+        overflow: scroll;
+    }
+} */
 p.text-bright {
     color: #fafafa;
 }

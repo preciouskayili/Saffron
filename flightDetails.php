@@ -23,7 +23,7 @@
      <div class="container">
        <div class="col-md-6 py-5 mx-auto">
          <div class="card" style="padding: 15px;">
-           <h4 class="text-primary text-center">Payment and Customer Details</h4>
+           <h4 class="text-white bg-primary text-center" style=" padding: 15px; box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);">Payment Details</h4>
            <!-- <hr class="mx-auto bg-primary" style="width: 60%;"> -->
            <h5 class="text-left text-primary">Flight id:</h5>
            <h5 class="text-left text-muted"><?php echo $id; ?></h5>
