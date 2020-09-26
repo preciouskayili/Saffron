@@ -4,4 +4,6 @@
     $sql = "SELECT * FROM contact_information";
 
     $result = $conn->query($sql);
+
+
 ?>
