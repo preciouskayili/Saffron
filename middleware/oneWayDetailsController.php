@@ -1,5 +1,5 @@
 <?php
-  include("../config/db_connect.php");
+  include("config/db_connect.php");
 
  // check GET request id param
  if(isset($_GET['id'])){

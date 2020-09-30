@@ -1,7 +1,7 @@
 <?php
     $name = $surname = $date_of_birth = $phone_number = $email = $gender = "";
     // connect to the database
-    include('../config/db_connect.php');
+    include('config/db_connect.php');
 
     session_start();
 

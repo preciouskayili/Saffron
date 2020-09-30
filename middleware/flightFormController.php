@@ -1,5 +1,5 @@
 <?php
-include('../config/db_connect.php');
+include('config/db_connect.php');
 
 $flying_from = $flying_to = $departure_date = $arrival_date = $number_of_adults = $number_of_children = $flight_class = "";
 
