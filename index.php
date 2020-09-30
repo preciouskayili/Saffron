@@ -158,7 +158,7 @@
                 <p class="text-muted"><?php echo $row['departure_date'];?></p>
               </div>
               <div class="text-center text-white">
-                <i class="fa fa-plane bg-primary" aria-hidden="true" style="width: 40px; height: 40px; font-size: 20px; border-radius: 50%; padding-top: 10px;"></i>
+                <i class="fa fa-plane bg-primary" aria-hidden="true" style="width: 40px; height: 40px; font-size: 20px; border-radius: 50%; padding-top: 10px;"></i> 
               </div>
               <div class="text-center">
                 <?php if(isset($row['arrival_date'])) : ?>
@@ -183,10 +183,16 @@
                 <p class="text-muted" style="font-size: 15px;"><?php echo $row['adults']; ?> Adults, <?php echo $row['children']; ?> Children</p>
                 <?php endif; ?>
               </div>
-                  
+              <?php if (isset($row['arrival_date'])) : ?> 
               <a class="btn btn-white btn-outline-dark waves-effect btn-sm d-block mx-auto" href="flightDetails.php?id=<?php echo $row['id']; ?>">
                 Book Flight  <i class="fa fa-plane-departure"></i>
               </a>
+              <?php else : ?>
+              <a class="btn btn-white btn-outline-dark waves-effect btn-sm d-block mx-auto" href="oneWayDetails.php?id=<?php echo $row['id']; ?>">
+                Book Flight  <i class="fa fa-plane-departure"></i>
+              </a>
+              <?php endif; ?>
+
             </div>
           </div>
           <br>
@@ -200,7 +206,7 @@
       <?php if (mysqli_num_rows($result) == 0) : ?>
       <div class="container" id="deleteEmptyResult">
         <div class="col-md-6 mx-auto">
-            <div class="card" style="padding: 15px;">
+            <div class="card-body">
               <button type="button" class="close text-danger" id="deleteThis" aria-label="Close" style="display: flex;">
                 <span aria-hidden="true">&times;</span>
               </button>

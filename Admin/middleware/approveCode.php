@@ -8,7 +8,7 @@
 
         $status = "Approved";
 
-        $approveQuery = "UPDATE `contact_information` SET `booking_status` = 'Approved' WHERE `contact_information`.`id` = $id";
+        $approveQuery = "UPDATE `contact_information` SET `status` = 'Approved' WHERE `contact_information`.`id` = $id";
         
         $conn->query($approveQuery);
 

@@ -190,7 +190,7 @@
                   <td><?php echo $row['phone_number']; ?></td>
                   <td><?php echo $row['flying_from']; ?></td>
                   <td><?php echo $row['flying_to']; ?></td>
-                  <td><?php echo $row['booking_status']; ?></td>
+                  <td><?php echo $row['status']; ?></td>
                   <td>
                     <button class="btn btn-sm btn-secondary" title="View booking"><i class="fa fa-eye"></i></button>
                     <a class="btn btn-sm btn-danger" title="Delete" href="middleware/deleteBooking.php?id=<?php echo $row['id']; ?>"><i class="fa fa-trash"></i></a>

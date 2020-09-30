@@ -20,30 +20,36 @@
         <button class="btn btn-primary btn-md btn-outline-white btn-shadow" onclick = "javascript:history.go(-1)"><i class="fa fa-angle-left"></i> Back</button>
      </nav>
      <?php if ($flight) : ?>
-     <div class="container">
+      <div class="container">
        <div class="col-md-6 py-5 mx-auto">
-         <div class="card" style="padding: 15px;">
-           <h4 class="text-white bg-primary text-center" style=" padding: 15px; box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);">Payment Details</h4>
+         <div class="card">
+          <div class="card-header bg-primary">
+           <h1 class="text-white text-center">Payment Details</h1>
+          </div>
            <!-- <hr class="mx-auto bg-primary" style="width: 60%;"> -->
-           <h5 class="text-left text-primary">Flight id:</h5>
-           <h5 class="text-left text-muted"><?php echo $id; ?></h5>
-           <h4 class="text-primary text-center"><?php echo $flight['flying_from']; ?></h4>
-           <i class="mx-auto fa fa-plane text-center text-white bg-primary" aria-hidden="true" style="width: 40px; height: 40px; font-size: 20px; border-radius: 50%; padding-top: 10px;"></i>
-           <h4 class="text-primary text-center"><?php echo $flight['flying_to']; ?></h4>
-           <p class="text-primary"><i class="fa fa-clock text-muted"></i> Departure date and Time:</p>
-           <p class="text-muted"><?php echo $flight['departure_date'] . ' ' . $flight['departure_time']; ?></p>
+            <div class="card-body">
+            <h5 class="text-left text-primary">Flight id:</h5>
+            <h5 class="text-left text-muted"><?php echo $id; ?></h5>
+            <h4 class="text-primary text-center d-block mx-auto"><?php echo $flight['flying_from']; ?></h4>
+            <i class="mx-auto fa fa-plane text-center text-white bg-primary" aria-hidden="true" style="width: 40px; height: 40px; font-size: 20px; border-radius: 50%; padding-top: 10px;"></i>
+            <h4 class="text-primary text-center"><?php echo $flight['flying_to']; ?></h4>
+            <p class="text-primary"><i class="fa fa-clock text-muted"></i> Departure date and Time:</p>
+            <p class="text-muted"><?php echo $flight['departure_date'] . ' ' . $flight['departure_time']; ?></p>
 
-           <p class="text-primary"><i class="fa fa-clock text-muted"></i> Arrival date and Time:</p>
-           <p class="text-muted"><?php echo $flight['arrival_date'] . ' ' . $flight['arrival_time']; ?></p>
-           <h4 class="text-primary">Price Breakdown</h4>
-           <p class="text-muted">NGN <?php echo $flight['flight_price'] + $flight['tax_price'] + $flight['insurance_price']; ?></p>
-           <p class="text-primary">Flight price:</p>
-           <p class="text-muted">NGN <?php echo $flight['flight_price']; ?></p>
-           <p class="text-primary">Insurance price:</p>
-           <p class="text-muted">NGN <?php echo $flight['insurance_price']; ?></p>
-           <p class="text-primary">Tax price:</p>
-           <p class="text-muted">NGN <?php echo $flight['tax_price']; ?></p>
-           <a class="btn btn-white btn-outline-dark waves-effect btn-sm" href="userFlightInfo.php?id=<?php echo $id; ?>">Proceed To Payment <i class="fa fa-credit-card"> </i></a>
+            <p class="text-primary"><i class="fa fa-clock text-muted"></i> Arrival date and Time:</p>
+            <p class="text-muted"><?php echo $flight['arrival_date'] . ' ' . $flight['arrival_time']; ?></p>
+            <h4 class="text-primary">Price Breakdown</h4>
+            <p class="text-muted">NGN <?php echo $flight['flight_price'] + $flight['tax_price'] + $flight['insurance_price']; ?></p>
+            <p class="text-primary">Flight price:</p>
+            <p class="text-muted">NGN <?php echo $flight['flight_price']; ?></p>
+            <p class="text-primary">Insurance price:</p>
+            <p class="text-muted">NGN <?php echo $flight['insurance_price']; ?></p>
+            <p class="text-primary">Tax price:</p>
+            <p class="text-muted">NGN <?php echo $flight['tax_price']; ?></p>
+            <a class="btn btn-white btn-outline-dark waves-effect btn-sm" href="userFlightInfo.php?id=<?php echo $id; ?>">Proceed To Payment <i class="fa fa-credit-card"> </i></a>
+           
+           </div>
+           
          </div>
        </div>
      </div>

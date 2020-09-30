@@ -1,7 +1,7 @@
 <?php
     $name = $surname = $date_of_birth = $phone_number = $email = $gender = "";
     // connect to the database
-    include('config/db_connect.php');
+    include('../config/db_connect.php');
 
     session_start();
 
@@ -46,15 +46,13 @@
         
         $date_of_birth = mysqli_real_escape_string($conn, $_GET['date_of_birth']);
         
-        $sql = "INSERT INTO contact_information(flight_id,name,surname,phone_number,email,gender,date_of_birth,flying_from,flying_to,booking_status) VALUES('$flight_id','$name','$surname','$phone_number','$email','$gender','$date_of_birth','$flying_from', '$flying_to', 'Pending')";
-        
-
-        session_unset();
-        
+        $sql = "INSERT INTO contact_information(flight_id,name,surname,phone_number,email,gender,date_of_birth,flying_from,flying_to,status) VALUES('$flight_id','$name','$surname','$phone_number','$email','$gender','$date_of_birth','$flying_from', '$flying_to', 'Pending')";
+                
         // save to db and check
         if(mysqli_query($conn, $sql)){
             // success
             header('Location: index.php');
+            session_unset();
         } else {
             echo 'query error: '. mysqli_error($conn);
         }

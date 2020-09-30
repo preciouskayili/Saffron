@@ -1,9 +1,3 @@
-<!-- 
-  ????????????? READ THIS!!!! ?????????
-  DONT NOT DELETE ANY CODE SOME OF THEM WORK AND I DONT KNOW HOW
-  ALSO THE SELECT IS BEING POPULATED FROM THE JAVASCRIPT SO
-  IF YOU REALLY ARE A FOOL DELETE THIS. THANKS FOR READING.
- -->
 <?php include("middleware/flightsDataController.php"); ?>
 <?php session_start(); ?>
 <!DOCTYPE html>
@@ -355,15 +349,9 @@
                       <td><?php echo $row['number_of_adults']; ?></td>
                       <td><?php echo $row['number_of_children']; ?></td>
                       <td><?php echo $row['flight_class']; ?></td>
-                      <script>
-                        document.querySelector("#noReload").addEventListener("click", () => {
-                          event.preventDefault();
-                        })
-                      </script>
                       <td>
-                        <form action="flights.php" method="post" id="editForm"></form>
-                        <button class="btn btn-sm btn-secondary"><i class="fa fa-eye"></i></button>
-                        <button class="btn btn-sm btn-warning" form="editForm" name="update" id="noReload" data-toggle="modal" data-target="#modal-edit<?php echo $id; ?>"><i class="fa fa-edit"></i></button>
+                        <button class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modal-view<?php echo $id; ?>"><i class="fa fa-eye"></i></button>
+                        <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-edit<?php echo $id; ?>"><i class="fa fa-edit"></i></button>
                         <a class="btn btn-sm btn-danger" href="middleware/deleteCode.php?id=<?php echo $id; ?>"><i class="fas fa-trash"></i></a>
                       </td>
                     </tr>
@@ -377,14 +365,69 @@
                             </button>
                           </div>
                           <div class="modal-body">
-                            <p>One fine body&hellip; <?php echo $id; ?></p>
-                            <?php if (isset($_POST['update'])) : ?>
-                              <p><?php "Server connected succesfully" ?></p>
-                            <?php endif; ?>
+
                           </div>
                           <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary">Update data</button>
+                          </div>
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
+
+                    <div class="modal fade" id="modal-view<?php echo $id; ?>">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">View flights</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p><b>Created at: <?php echo $row['created_at']; ?></b></p>
+                            <p><b>Flight id: <?php echo $row['id']; ?></b></p>
+                            <div class="row">
+                              <div class="col-md-6"><p><b>Created by: <?php echo $row['created_by']; ?></b></p></div>
+                              <div class="col-md-6"></div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6"><p>Flying from: <b><?php echo $row['flying_from']; ?></p></b></div>
+                              <div class="col-md-6"><p>Flying to: <b><?php echo $row['flying_to']; ?></p></b></div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6"><p>Departure date: <b><?php echo $row['departure_date']; ?></p></b></p></div>
+                              <div class="col-md-6"><p>Departure time: <b><?php echo $row['departure_time']; ?></p></b></p></div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6"><p>Arrival date: <b><?php echo $row['arrival_date']; ?></p></b></p></div>
+                              <div class="col-md-6"><p>Arrival time: <b><?php echo $row['arrival_time']; ?></p></b></p></div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6"><p>Number of adults: <b><?php echo $row['number_of_adults']; ?></p></b></p></div>
+                              <div class="col-md-6"><p>Number of children: <b><?php echo $row['number_of_children']; ?></p></b></p></div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6"><p>Flight class: <b><?php echo $row['flight_class']; ?></p></b></p></div>
+                              <div class="col-md-6"><p>Flight price: <b><?php echo $row['flight_price']; ?></p></b></p></div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6"><p>Insurance price: <b><?php echo $row['insurance_price']; ?></p></b></p></div>
+                              <div class="col-md-6"><p>Tax price: <b><?php echo $row['tax_price']; ?></p></b></p></div>
+                            </div>
+
+                          </div>
+                          <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                           </div>
                         </div>
                         <!-- /.modal-content -->
@@ -541,11 +584,12 @@
                       <th>Children</th>
                       <th>Travel class</th>
                       <th>Action</th>
-                    </tr>
+                    </tr>    
                   </thead>
                   <tbody>
                   <?php foreach ($secondRow as $rowTwo) : ?>
                     <tr>
+                      <?php $secondId = $rowTwo['id']; ?>
                       <td><?php echo $rowTwo['id']; ?></td>
                       <td><?php echo $rowTwo['flying_from']; ?></td>
                       <td><?php echo $rowTwo['flying_to']; ?></td>
@@ -556,7 +600,7 @@
                       <td>
                         <button class="btn btn-sm btn-dark"><i class="fa fa-eye"></i></button>
                         <button class="btn btn-sm btn-success"><i class="fas fa-edit"></i></button>
-                        <button class="btn btn-sm btn-danger" data-dismiss="modal" aria-label="Close"><i class="fas fa-trash"></i></button>
+                        <a class="btn btn-sm btn-danger" href="middleware/secondDeleteCode.php?secondId=<?php echo $secondId; ?>"><i class="fas fa-trash"></i></a>
                       </td>
                     </tr>
                   <?php endforeach; ?>
@@ -569,14 +613,14 @@
           </div>
         </div>
         <!-- /.row -->
-	</div>
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+      </div>
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
@@ -613,7 +657,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <!-- MDBootstrap Js -->
-<script type="text/javascript" src="../../js/mdb.min.js"></script>
+<script type="text/javascript" src="admin.js"></script>
 
 </body>
 </html>

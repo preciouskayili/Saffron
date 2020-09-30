@@ -1,5 +1,5 @@
 <?php
-    include('config/db_connect.php');
+    include('../config/db_connect.php');
 
     if (isset($_POST['instantSearch'])) {
         $searchQuery = mysqli_real_escape_string($conn,$_POST['q']);
