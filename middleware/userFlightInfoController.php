@@ -20,8 +20,6 @@
     $_SESSION['flying_from'] = $insertArray['flying_from'];
 
     $_SESSION['flying_to'] = $insertArray['flying_to'];
-
-    // print_r ($insertArray);
     
     }
 

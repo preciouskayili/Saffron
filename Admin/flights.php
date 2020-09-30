@@ -264,43 +264,7 @@
       <!-- /.modal -->
     <!-- /.content-header -->
     <script>
-      var countries = [
-        "Ghana",
-        "USA",
-        "London",
-        "UK",
-        "Cameron",
-        "Dubai",
-        "Nigeria",
-        "Turkey",
-        "Canada",
-      ];
-      function populateSelect() {
-        var html = "";
-        html += "<option disabled>-- Choose country --</option>";
-        for (let index = 0; index < countries.length; index++) {
-          const element = countries[index];
-          html += "<option value='" + element + "'>" + element + "</option>";
-        }
-
-        $("#from").html(html);
-        $("#fromTwo").html(html);
-      }
-
-      function populateSecond() {
-        var fromValue = document.getElementById("from").value;
-        var fromValueTwo = document.getElementById("fromTwo").value;
-        var html = "";
-        html += "<option disabled>-- Choose country --</option>";
-        for (let index = 0; index < countries.length; index++) {
-          const element = countries[index];
-          if (fromValue != element && fromValueTwo != element) {
-            html += "<option value='" + element + "'>" + element + "</option>";
-          }
-        }
-        $("#to").html(html);
-        $("#toTwo").html(html);
-      }
+      
     </script>
     <div class="container">
       <!-- /.row -->
@@ -365,7 +329,96 @@
                             </button>
                           </div>
                           <div class="modal-body">
+                          <form action="flights.php" method="post">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>Flying from</label>
+                                  <select class="form-control select2" name="update_flying_from" style="width: 100%;" id="updateFrom" onchange="populateSecond()">
+                                        
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>Flying to</label>
+                                  <select class="form-control select2" name="update_flying_to" style="width: 100%;" id="updateTo">
+                                        
+                                  </select>
+                                </div>
+                              </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="exampleInputPassword1">Departure date</label>
+                                      <input type="date" class="form-control" name="update_departure_date" id="exampleInputPassword1" placeholder="Password">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="exampleInputPassword1">Arrival date</label>
+                                      <input type="date" class="form-control" name="update_arrival_date" id="exampleInputPassword1" placeholder="Password">
+                                    </div>
+                                  </div>
 
+                                  <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Adults(18+)</label>
+                                        <select class="form-control select2" name="update_adults" style="width: 100%;">
+                                            <option selected="selected">1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                        </select>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                      <div class="form-group">
+                                          <label>Children</label>
+                                          <select class="form-control select2" name="update_children" style="width: 100%;">
+                                              <option selected="selected">1</option>
+                                              <option>2</option>
+                                              <option>3</option>
+                                              <option>4</option>
+                                              <option>5</option>
+                                              <option>6</option>
+                                          </select>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                      <div class="form-group">
+                                          <label>Travel class</label> 
+                                          <select class="form-control select2" name="update_travel_class" style="width: 100%;">
+                                              <option selected="selected">Economy class</option>
+                                              <option>Business class</option>
+                                              <option>Premium class</option>
+                                          </select>
+                                      </div>
+                                  </div>
+
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="exampleInputPassword1">Departure time</label>
+                                      <input type="text" class="form-control" value="<?php echo $row['departure_time']; ?>" name="update_departure_time" id="exampleInputPassword1" placeholder="e.g 8:00 pm">
+                                    </div>
+                                  </div>
+
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="exampleInputPassword1">Arrival time</label>
+                                      <input type="text" class="form-control" value="<?php echo $row['arrival_time']; ?>" name="update_arrival_time" id="exampleInputPassword1" placeholder="e.g 8:00 am">
+                                    </div>
+                                  </div>
+
+                                  <div class="col-md-12">
+                                    <div class="form-group">
+                                      <label for="exampleInputPassword1">Flight price</label>
+                                      <input type="text" class="form-control" value="<?php echo $row['flight_price']; ?>" name="update_flight_price" id="exampleInputPassword1" placeholder="Flight price">
+                                    </div>
+                                  </div>
+                                </div>
+                              </form>
                           </div>
                           <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -658,6 +711,9 @@
 <script src="dist/js/demo.js"></script>
 <!-- MDBootstrap Js -->
 <script type="text/javascript" src="admin.js"></script>
+
+<!-- Custom script -->
+<script src="populateSelect.js"></script>
 
 </body>
 </html>
