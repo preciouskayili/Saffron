@@ -70,8 +70,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="../index.php" class="brand-link">
-      <div class="text-white">
-        <i class="text-center fa fa-plane bg-primary" aria-hidden="true" style="width: 40px; height: 40px; font-size: 20px; border-radius: 50%; padding-top: 10px;"></i>
+      <div class="text-white text-center">
         <span class="brand-text font-weight-light">Saffron</span>
       </div>
     </a>
@@ -183,6 +182,7 @@
               <tbody>
                 <?php while($row = mysqli_fetch_assoc($result)) : ?>
                 <tr>
+                  <?php $id = $row['id']; ?>
                   <td><?php echo $row['id']; ?></td>
                   <td><?php echo $row['flight_id']; ?></td>
                   <td><?php echo $row['name']; ?></td>
@@ -192,11 +192,58 @@
                   <td><?php echo $row['flying_to']; ?></td>
                   <td><?php echo $row['status']; ?></td>
                   <td>
-                    <button class="btn btn-sm btn-secondary" title="View booking"><i class="fa fa-eye"></i></button>
-                    <a class="btn btn-sm btn-danger" title="Delete" href="middleware/deleteBooking.php?id=<?php echo $row['id']; ?>"><i class="fa fa-trash"></i></a>
                     <a class="btn btn-sm btn-success" title="Approve booking" href="middleware/approveCode.php?id=<?php echo $row['id']; ?>"><i class="fas fa-check"></i></a>
+                    <button class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modal-view<?php echo $id; ?>" title="View booking"><i class="fa fa-eye"></i></button>
+                    <a class="btn btn-sm btn-danger" title="Delete" href="middleware/deleteBooking.php?id=<?php echo $row['id']; ?>"><i class="fa fa-trash"></i></a>
                   </td>
                 </tr>
+                <div class="modal fade" id="modal-view<?php echo $id; ?>">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">View flights</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <p><b>Booking id: <?php echo $id; ?></b></p>
+                        <p><b>Flight id: <?php echo $row['flight_id']; ?></b></p>
+                        <div class="row">
+                          <div class="col-md-6"><p><b>Name: <?php echo $row['name']; ?></b></p></div>
+                          <div class="col-md-6"><p><b>Surname: <?php echo $row['surname']; ?></b></p></div>
+                          
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-6"><p>Phone number: <b><?php echo $row['phone_number']; ?></p></b></div>
+                          <div class="col-md-6"><p>Email: <b><?php echo $row['email']; ?></p></b></div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-6"><p>Gender: <b><?php echo $row['gender']; ?></p></b></p></div>
+                          <div class="col-md-6"><p>Date of birth: <b><?php echo $row['date_of_birth']; ?></p></b></p></div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-6"><p>Flying from: <b><?php echo $row['flying_from']; ?></p></b></p></div>
+                          <div class="col-md-6"><p>Flying to: <b><?php echo $row['flying_to']; ?></p></b></p></div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-6"><p>Status: <b><?php echo $row['status']; ?></p></b></p></div>
+                        </div>
+                        
+                      </div>
+                      <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
                 <?php endwhile; ?>
               </tbody>
             </table>

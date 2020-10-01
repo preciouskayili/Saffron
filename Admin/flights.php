@@ -1,3 +1,4 @@
+<?php include("../config/countries.php"); ?>
 <?php include("middleware/flightsDataController.php"); ?>
 <?php session_start(); ?>
 <!DOCTYPE html>
@@ -161,34 +162,38 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="flights.php" method="post" id="saveForm">
+          <form action="../config/countries.php" method="post" id="saveForm">
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Flying from</label>
-                    <select class="form-control select2" name="flying_from" style="width: 100%;" id="from" onchange="populateSecond()">
-                          
+                    <select class="form-control select2" name="flying_from" style="width: 100%;">
+                      <?php foreach($countries as $country) : ?>
+                      <option><?php echo $country['country']; ?></option>
+                      <?php endforeach; ?>
                     </select>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Flying to</label>
-                    <select class="form-control select2" name="flying_to" style="width: 100%;" id="to">
-                          
+                    <select class="form-control select2" name="flying_to" style="width: 100%;">
+                      <?php foreach($countries as $country) : ?>
+                        <option><?php echo $country['country']; ?></option>
+                      <?php endforeach; ?>
                     </select>
                   </div>
                 </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="exampleInputPassword1">Departure date</label>
-                        <input type="date" class="form-control" name="departure_date" id="exampleInputPassword1" placeholder="Password">
+                        <input type="date" class="form-control" name="departure_date" id="exampleInputPassword1">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="exampleInputPassword1">Arrival date</label>
-                        <input type="date" class="form-control" name="arrival_date" id="exampleInputPassword1" placeholder="Password">
+                        <input type="date" class="form-control" name="arrival_date" id="exampleInputPassword1">
                       </div>
                     </div>
 
@@ -263,12 +268,35 @@
       </div>
       <!-- /.modal -->
     <!-- /.content-header -->
-    <script>
-      
-    </script>
+    <div class="modal fade" id="modal-country">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title"><i class="fa fa-flag"></i>Add country</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="flights.php" method="post" id="countryId">
+                <input type="text" class="form-control" name="newCountry" placeholder="Name of country">
+              </form>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" name="submitCountry" class="btn btn-primary" form="countryId">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+ 
     <div class="container">
       <!-- /.row -->
 		  <button class="btn btn-primary btn-md d-block ml-auto" data-toggle="modal" data-target="#modal-default" style="margin-bottom: 22px;"><i class="fas fa-plus"></i> Add Flight</button>
+		  <button class="btn btn-danger btn-md d-block ml-auto"data-toggle="modal" data-target="#modal-country" style="margin-bottom: 22px;"><i class="fas fa-flag"></i> Add Country</button>
         <div class="row">
           <div class="col-12">
             <div class="card">
@@ -329,24 +357,28 @@
                             </button>
                           </div>
                           <div class="modal-body">
-                          <form action="flights.php" method="post">
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label>Flying from</label>
-                                  <select class="form-control select2" name="update_flying_from" style="width: 100%;" id="updateFrom" onchange="populateSecond()">
-                                        
-                                  </select>
+                            <form action="middleware/processUpdate.php?id=<?php echo $id; ?>" method="post" id="updateForm">
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label>Flying from</label>
+                                    <select class="form-control select2" name="update_flying_from" value="<?php echo $row['flying_from']; ?>" style="width: 100%;">
+                                      <?php foreach($countries as $country): ?>
+                                        <option><?php echo $country['country']; ?></option>
+                                      <?php endforeach; ?>
+                                    </select>
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label>Flying to</label>
-                                  <select class="form-control select2" name="update_flying_to" style="width: 100%;" id="updateTo">
-                                        
-                                  </select>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label>Flying to</label>
+                                    <select class="form-control select2" name="update_flying_to" value="<?php echo $row['flying_to']; ?>" style="width: 100%;">
+                                    <?php foreach($countries as $country): ?>
+                                      <option><?php echo $country['country']; ?></option>
+                                    <?php endforeach; ?>
+                                    </select>
+                                  </div>
                                 </div>
-                              </div>
                                   <div class="col-md-6">
                                     <div class="form-group">
                                       <label for="exampleInputPassword1">Departure date</label>
@@ -418,11 +450,12 @@
                                     </div>
                                   </div>
                                 </div>
+                                
                               </form>
-                          </div>
+                            </div>
                           <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Update data</button>
+                            <button class="btn btn-primary" name="update_data" form="updateForm">Update data</button>
                           </div>
                         </div>
                         <!-- /.modal-content -->
@@ -430,7 +463,6 @@
                       <!-- /.modal-dialog -->
                     </div>
                     <!-- /.modal -->
-
                     <div class="modal fade" id="modal-view<?php echo $id; ?>">
                       <div class="modal-dialog">
                         <div class="modal-content">
@@ -519,7 +551,9 @@
                     <div class="form-group">
                         <label>Flying from</label>
                         <select class="form-control select2" name="flying_from2" style="width: 100%;" id="fromTwo" onchange="populateSecond()">
-                            
+                        <?php foreach($countries as $country): ?>
+                          <option><?php echo $country['country']; ?></option>
+                        <?php endforeach; ?>
                         </select>
                     </div>
                 </div>
@@ -527,7 +561,9 @@
                     <div class="form-group">
                         <label>Flying to</label>
                         <select class="form-control select2" name="flying_to2" style="width: 100%;" id="toTwo">
-                            
+                        <?php foreach($countries as $country): ?>
+                          <option><?php echo $country['country']; ?></option>
+                        <?php endforeach; ?>  
                         </select>
                     </div>
                 </div>
@@ -651,11 +687,64 @@
                       <td><?php echo $rowTwo['children']; ?></td>
                       <td><?php echo $rowTwo['travel_class']; ?></td>
                       <td>
-                        <button class="btn btn-sm btn-dark"><i class="fa fa-eye"></i></button>
+                        <button class="btn btn-sm btn-dark" data-toggle="modal" data-target="#modal-viewTwo<?php echo $id; ?>"><i class="fa fa-eye"></i></button>
                         <button class="btn btn-sm btn-success"><i class="fas fa-edit"></i></button>
                         <a class="btn btn-sm btn-danger" href="middleware/secondDeleteCode.php?secondId=<?php echo $secondId; ?>"><i class="fas fa-trash"></i></a>
                       </td>
                     </tr>
+                    <!-- /.modal -->
+                    <div class="modal fade" id="modal-viewTwo<?php echo $id; ?>">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">View flights</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p><b>Created at: <?php echo $rowTwo['created_at']; ?></b></p>
+                            <p><b>Flight id: <?php echo $rowTwo['id']; ?></b></p>
+                            <div class="row">
+                              <div class="col-md-6"><p><b>Created by: <?php echo $rowTwo['created_by']; ?></b></p></div>
+                              <div class="col-md-6"></div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6"><p>Flying from: <b><?php echo $rowTwo['flying_from']; ?></p></b></div>
+                              <div class="col-md-6"><p>Flying to: <b><?php echo $rowTwo['flying_to']; ?></p></b></div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6"><p>Departure date: <b><?php echo $rowTwo['departure_date']; ?></p></b></p></div>
+                              <div class="col-md-6"><p>Departure time: <b><?php echo $rowTwo['departure_time']; ?></p></b></p></div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6"><p>Number of adults: <b><?php echo $rowTwo['adults']; ?></p></b></p></div>
+                              <div class="col-md-6"><p>Number of children: <b><?php echo $rowTwo['children']; ?></p></b></p></div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6"><p>Flight class: <b><?php echo $rowTwo['travel_class']; ?></p></b></p></div>
+                              <div class="col-md-6"><p>Flight price: <b><?php echo $rowTwo['flight_price']; ?></p></b></p></div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6"><p>Insurance price: <b><?php echo $rowTwo['insurance_price']; ?></p></b></p></div>
+                              <div class="col-md-6"><p>Tax price: <b><?php echo $rowTwo['tax_price']; ?></p></b></p></div>
+                            </div>
+
+                          </div>
+                          <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
                   <?php endforeach; ?>
                   </tbody>
                 </table>
@@ -711,9 +800,6 @@
 <script src="dist/js/demo.js"></script>
 <!-- MDBootstrap Js -->
 <script type="text/javascript" src="admin.js"></script>
-
-<!-- Custom script -->
-<script src="populateSelect.js"></script>
 
 </body>
 </html>
