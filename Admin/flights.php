@@ -162,7 +162,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="../config/countries.php" method="post" id="saveForm">
+          <form action="flights.php" method="post" id="saveForm">
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
@@ -279,7 +279,7 @@
             </div>
             <div class="modal-body">
               <form action="flights.php" method="post" id="countryId">
-                <input type="text" class="form-control" name="newCountry" placeholder="Name of country">
+                <input type="text" class="form-control" name="newCountry" placeholder="Name of country" required>
               </form>
             </div>
             <div class="modal-footer justify-content-between">
@@ -687,13 +687,118 @@
                       <td><?php echo $rowTwo['children']; ?></td>
                       <td><?php echo $rowTwo['travel_class']; ?></td>
                       <td>
-                        <button class="btn btn-sm btn-dark" data-toggle="modal" data-target="#modal-viewTwo<?php echo $id; ?>"><i class="fa fa-eye"></i></button>
-                        <button class="btn btn-sm btn-success"><i class="fas fa-edit"></i></button>
+                        <button class="btn btn-sm btn-dark" data-toggle="modal" data-target="#modal-viewTwo<?php echo $secondId; ?>"><i class="fa fa-eye"></i></button>
+                        <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal-second<?php echo $secondId; ?>"><i class="fas fa-edit"></i></button>
                         <a class="btn btn-sm btn-danger" href="middleware/secondDeleteCode.php?secondId=<?php echo $secondId; ?>"><i class="fas fa-trash"></i></a>
                       </td>
                     </tr>
+                    <div class="modal fade" id="modal-second<?php echo $secondId; ?>">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Add One way flight</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <form action="middleware/processOneWayUpdate.php?secondId=<?php echo $secondId; ?>" id="update_secondForm" method="post">
+                              <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Flying from</label>
+                                        <select class="form-control select2" name="flying_from_update_two" style="width: 100%;" id="fromTwo" onchange="populateSecond()">
+                                        <?php foreach($countries as $country): ?>
+                                          <option><?php echo $country['country']; ?></option>
+                                        <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Flying to</label>
+                                        <select class="form-control select2" name="flying_to_update_two" style="width: 100%;" id="toTwo">
+                                        <?php foreach($countries as $country): ?>
+                                          <option><?php echo $country['country']; ?></option>
+                                        <?php endforeach; ?>  
+                                        </select>
+                                    </div>
+                                </div>
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+                                        <label for="exampleInputPassword1">Departure date</label>
+                                        <input type="date" class="form-control" name="departure_date_update_two" id="exampleInputPassword1" placeholder="Password">
+                                      </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+                                          <label>Adults(18+)</label>
+                                          <select class="form-control select2" name="adults_update_two" style="width: 100%;">
+                                              <option selected="selected">1</option>
+                                              <option>2</option>
+                                              <option>3</option>
+                                              <option>4</option>
+                                              <option>5</option>
+                                              <option>6</option>
+                                          </select>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Children</label>
+                                            <select class="form-control select2" name="children_update_two" style="width: 100%;">
+                                                <option selected="selected">1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Travel class</label>
+                                            <select class="form-control select2" name="travel_class_update_two" style="width: 100%;">
+                                                <option selected="selected">Economy class</option>
+                                                <option>Business class</option>
+                                                <option>Premium class</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+                                        <label for="exampleInputPassword1">Departure time</label>
+                                        <input type="text" value="<?php echo $rowTwo['departure_time']; ?>" class="form-control" name="departure_time_update_two" id="exampleInputPassword1" placeholder="e.g 8:00 pm">
+                                      </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+                                        <label for="exampleInputPassword1">Flight price</label>
+                                        <input type="text" class="form-control" value="<?php echo $rowTwo['flight_price']; ?>" name="flight_price_update_two" id="exampleInputPassword1" placeholder="Flight price">
+                                      </div>
+                                    </div>
+                                  </div>
+                              </form>
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              <button class="btn btn-primary" name="update_second" form="update_secondForm">Save changes</button>
+                            </div>
+                          </div>
+                          <!-- /.modal-content -->
+                        </div>
+                      <!-- /.modal-dialog -->
+                    </div>
                     <!-- /.modal -->
-                    <div class="modal fade" id="modal-viewTwo<?php echo $id; ?>">
+
+                    <!-- /.modal -->
+                    <div class="modal fade" id="modal-viewTwo<?php echo $secondId; ?>">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">

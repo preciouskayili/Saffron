@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+
+    <h1>My Todo List</h1>
+    
+    </header>
+    <form id="form-reset">
+        <input type="text" name="" value="" class="todo-input">
+
+        <button type="submit" class="todo-button" id="button-id">
+        Add
+        </button>
+    </form>
+    <div class="todo-container">
+        <ul id="todo-list" style="list-style-type: none;">
+        </ul>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
+<script>
+    const todoInput = document.querySelector('.todo-input');
+    const todoList = document.getElementById('todo-list');
+    const todoButton = document.querySelector('.todo-buttton');
+
+    document.getElementById('button-id').addEventListener('click', (e) =>{
+        e.preventDefault();
+
+        const todoDiv = document.createElement('div');
+        todoDiv.classList.add('todo');
+
+        const newTodo = document.createElement('li');
+        newTodo.classList.add('todo-item');
+        newTodo.innerText= todoInput.value;
+
+        todoDiv.appendChild(newTodo);
+
+        const completedButton= document.createElement('button');
+        completedButton.classList.add('btn');
+        completedButton.classList.add('btn-success');
+        completedButton.innerHTML= '<i class="fa fa-check"></i>';
+
+        todoDiv.appendChild(completedButton);
+
+        const trashButton= document.createElement('button');
+        completedButton.classList.add('btn');
+        completedButton.classList.add('btn-danger');
+        completedButton.innerHTML= '<i class="fa fa-trash"></i>';
+
+        todoList.appendChild(todoDiv);
+        document.getElementById('form-reset').reset();
+
+    }); 
+
+</script>

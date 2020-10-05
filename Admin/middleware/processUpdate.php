@@ -18,7 +18,7 @@
     
             $sql = "UPDATE `flights` SET `flying_from`  = '$flyingFrom', `flying_to` = '$flyingTo',
             `departure_date` = '$departureDate', `arrival_date` ='$arrivalDate', `number_of_adults` = '$numberOfAdults', `number_of_children` = '$numberOfChildren',  
-            `flight_class` = '$flightClass', `departure_time` = '$departureTime', `arrival_time` = '$departureTime',
+            `flight_class` = '$flightClass', `departure_time` = '$departureTime',
             `arrival_time` = '$arrivalTime', `flight_price` = '$flightPrice' WHERE `id` = $id";
     
             if ($conn -> query($sql)) {

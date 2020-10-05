@@ -1,5 +1,6 @@
 <?php include 'middleware/flightFormController.php'; ?>
 <?php include 'middleware/searchController.php'; ?>
+<?php include 'config/countries.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,16 +61,20 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <span class="form-label text-muted">Flying from</span>
-                    <select class="form-control" name="flying_from" placeholder="City or airport" id="from" onchange="populateSecond()" style="border-radius: 0px;">
-                      <!-- <option disabled selected>-- Choose country --</option> -->
+                    <select class="form-control" name="flying_from" placeholder="City or airport" style="border-radius: 0px;">
+                      <?php foreach($countries as $country) : ?>
+                      <option value=""><?php echo $country['country']; ?></option>
+                      <?php endforeach;?>
                     </select>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <span class="form-label text-muted">Flying to</span>
-                    <select class="form-control" name="flying_to" placeholder="City or airport" id="to" style="border-radius: 0px;">
-                      <!-- <option disabled selected>-- Choose country --</option> -->
+                    <select class="form-control" name="flying_to" placeholder="City or airport" style="border-radius: 0px;">
+                    <?php foreach($countries as $country) : ?>
+                      <option value=""><?php echo $country['country']; ?></option>
+                    <?php endforeach;?>
                     </select>
                   </div>
                 </div>

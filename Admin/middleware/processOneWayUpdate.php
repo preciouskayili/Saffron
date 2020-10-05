@@ -1,24 +1,19 @@
 <?php
     include("../../config/db_connect.php");
-    if (isset($_POST['update_data'])){
-        if (isset($_GET['id'])) {
+    if (isset($_POST['update_second'])){
+        if (isset($_GET['secondId'])) {
 
-            $id = $_GET['id'];
-            $flyingFrom = mysqli_real_escape_string($conn, $_POST['update_flying_from']);
-            $flyingTo = mysqli_real_escape_string($conn, $_POST['update_flying_to']);
-            $departureDate = mysqli_real_escape_string($conn, $_POST['update_departure_date']);
-            $arrivalDate = mysqli_real_escape_string($conn, $_POST['update_arrival_date']);
-            $numberOfAdults = mysqli_real_escape_string($conn, $_POST['update_adults']);
-            $numberOfChildren = mysqli_real_escape_string($conn, $_POST['update_children']);
-            $flightClass = mysqli_real_escape_string($conn, $_POST['update_travel_class']);
-            $departureTime = mysqli_real_escape_string($conn, $_POST['update_departure_time']);
-            $arrivalTime = mysqli_real_escape_string($conn, $_POST['update_arrival_time']); 
-            $flightPrice = mysqli_real_escape_string($conn, $_POST['update_flight_price']);
+            $secondId = $_GET['secondId'];
+            $flyingFrom = mysqli_real_escape_string($conn, $_POST['flying_from_update_two']);
+            $flyingTo = mysqli_real_escape_string($conn, $_POST['flying_to_update_two']);
+            $departureDate = mysqli_real_escape_string($conn, $_POST['departure_date_update_two']);
+            $numberOfAdults = mysqli_real_escape_string($conn, $_POST['adults_update_two']);
+            $numberOfChildren = mysqli_real_escape_string($conn, $_POST['children_update_two']);
+            $flightClass = mysqli_real_escape_string($conn, $_POST['travel_class_update_two']);
+            $departureTime = mysqli_real_escape_string($conn, $_POST['departure_time_update_two']);
+            $flightPrice = mysqli_real_escape_string($conn, $_POST['flight_price_update_two']);
     
-            $sql = "UPDATE `flights` SET `flying_from`  = '$flyingFrom', `flying_to` = '$flyingTo',
-            `departure_date` = '$departureDate', `arrival_date` ='$arrivalDate', `number_of_adults` = '$numberOfAdults', `number_of_children` = '$numberOfChildren',  
-            `flight_class` = '$flightClass', `departure_time` = '$departureTime', `arrival_time` = '$departureTime',
-            `arrival_time` = '$arrivalTime', `flight_price` = '$flightPrice' WHERE `id` = $id";
+            $sql = "UPDATE `one_way` SET flying_from = '$flyingFrom', flying_to = '$flyingTo' WHERE id = $secondId";
     
             if ($conn -> query($sql)) {
                 header('Location: ../flights.php');
